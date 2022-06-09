@@ -38,6 +38,17 @@ export default class Cards{
         return usableCards.length == 0 ? this._cards : usableCards;
     }
 
+    public contains(card : Card){
+        this._cards.forEach(_card => {
+            if(_card == card) return true;
+        });
+        return false;
+    }
+
+    public count(){
+        return this._cards.length;
+    }
+
     public sort(){
         this._cards.sort((a : Card, b : Card) => {
             return a.compareTo(b);

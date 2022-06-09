@@ -1,8 +1,9 @@
+import Cards from "./Cards";
 import Message from "./Message";
 import Player from "./Player";
 
 export default class Players{
-    private _players : Player[];
+    private _players : Player[] = [];
 
     public count(){
         return this._players.length;
@@ -50,6 +51,12 @@ export default class Players{
         this._players.forEach(player => {
             player.calcPoints();
         });
+    }
+
+    public setCards(amount : number, getCards : (amount : number) => Cards){
+        this._players.forEach(player => {
+            player.cards = getCards(amount);
+        })
     }
 
     public getWinnerOfTrick(){

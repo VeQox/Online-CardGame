@@ -1,4 +1,5 @@
 import Cards from "./Cards";
+import Card from "./Card";
 import WebSocket from "ws";
 import Message from "./Message";
 
@@ -24,6 +25,10 @@ export default class Player{
         this.calledHits = 0;
         this.selectedCardIndex = -1;
         this.readyState = false;
+    }
+
+    public set cards(cards : Cards){
+        this._cards = cards;
     }
 
     public points(){
