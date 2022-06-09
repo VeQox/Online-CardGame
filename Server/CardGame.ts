@@ -2,6 +2,7 @@ import Cards from "./Cards";
 import Players from "./Players";
 import Player from "./Player";
 import Card from "./Card";
+import Message from "./Message";
 
 export default class CardGame {
     private _players : Players;
@@ -12,7 +13,7 @@ export default class CardGame {
     private _reverse :boolean;
 
     private _startingPlayer : number;
-    private _currentPayer : number;
+    private _currentPlayer : number;
     private _cardsPerRound : number;
     private _currentCards : number;
 
@@ -25,7 +26,7 @@ export default class CardGame {
         this._reverse = false;
 
         this._startingPlayer = 0;
-        this._currentPayer = 0;
+        this._currentPlayer = 0;
         this._cardsPerRound = 1;
         this._currentCards = 1;
     }
@@ -46,6 +47,10 @@ export default class CardGame {
         return this._players.count();
     }
 
+    public get readyCount(){
+        return this._players.readyCount()
+    }
+
     public add(player : Player){
         this._players.add(player);
     }
@@ -58,7 +63,7 @@ export default class CardGame {
         return this._players.getAt(index);
     }
 
-    public getNewHand(amount : number){
+    public getNewHands(amount : number){
         this._usedCards = new Cards();
         this._players.setCards(amount, this.withdrawCards);
     }
@@ -79,5 +84,41 @@ export default class CardGame {
             card = CardGame.stack.getAt(Math.floor(Math.random()*CardGame.stack.count()));
         } while (this._usedCards.contains(card) === false);
         return card;
+    }
+
+    public selectCard(player : Player, selected : number){
+        if(player.hasSelected()) return false;
+        if(player != this._players.getAt(this._currentPlayer)) return false;
+
+        player.selectedCardIndex = selected;
+        this._selectedCards.add(player.selectedCard());
+
+        return true;
+    }
+
+    public updateSelectedCards(){
+        this._players.emit(new Message("selectedCards", this._selectedCards));
+    }
+
+    public updateReady(){
+        this._players.emit(new Message("updateReady", `${this.readyCount} / ${this.count}`));
+    }
+
+    public updateCards(){
+        this._players.updateCards();
+    }
+
+    public areReady(){
+        return this._players.areReady();
+    }
+
+    public start(){
+        this._startingPlayer = 0;
+        this._currentPlayer = 0;
+        this._cardsPerRound = 1;
+
+        this.started = true;
+        this.getNewHands(this._cardsPerRound);
+        this._players.startup();
     }
 }

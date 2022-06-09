@@ -76,6 +76,14 @@ export default class Players{
         });
     }
 
+    public startup(){
+        let id = 0;
+        this._players.forEach(player => {
+            player.startup(id, this.count());
+            id++;
+        }); 
+    }
+
     public emit(message : Message){
         this._players.forEach(player => {
             player.send(message);

@@ -39,6 +39,10 @@ export default class Player{
         return this._cards.getAt(this.selectedCardIndex);
     }
 
+    public selectSuccessful(){
+        this.send(new Message("selectSuccessful", ""));
+    }
+
     public compareTo(other : Player){
         if(this.points > other.points) return 1;
         if(this.points < other.points) return -1;
@@ -63,6 +67,10 @@ export default class Player{
 
     public hasSelected(){
         return this.selectedCardIndex !== -1;
+    }
+
+    public startup(id : number, playercount : number){
+        this.send(new Message("start", {"id": id, "count": playercount}));
     }
 
     public updateCards(){
