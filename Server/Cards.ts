@@ -1,66 +1,46 @@
 import Card from "./Card";
 
 export default class Cards{
-    private cards : Card[] = [];
+    private _cards : Card[] = [];
 
-    /**
-     * Adds an element from the cards array
-     * @param card 
-     */
     public add(card : Card){
-        this.cards.push(card);
+        this._cards.push(card);
     }
 
-    /**
-     * Removes an element from the cards array
-     * @param card
-     */
     public remove(card : Card){
-        this.cards.splice(this.cards.indexOf(card), 1);
+        this._cards.splice(this._cards.indexOf(card), 1);
     }
 
     public removeAt(index : number){
-        this.cards.splice(index, 1);
+        this._cards.splice(index, 1);
     }
 
-    /**
-     * @returns internal cards array
-     */
-    public getCards(){
-        return this.cards;
+    public cards(){
+        return this._cards;
     }
 
-    /**
-     * returns the card on the given index
-     * @param index 
-     * @returns 
-     */
     public getAt(index : number){
-        return this.cards[index];
+        return this._cards[index];
     }
 
-    /**
-     * returns an Array of cards filtered by their types
-     * @param type 
-     */
-    
     private getPerType(type : string){
         let filteredCards : Card[] = [];
-        this.cards.forEach(card => {
-            if(card.Type == type){
+        this._cards.forEach(card => {
+            if(card.type == type){
                 filteredCards.push(card);
             }
         });
         return filteredCards;
     }
 
-    /**
-     * Get the usable cards of a round due to the forced card type
-     * @param card 
-     * @returns 
-     */
     public getUsableCards(card : Card){
-        let usableCards = this.getPerType(card.Type);
-        return usableCards.length == 0 ? this.cards : usableCards;
-    } 
+        let usableCards = this.getPerType(card.type);
+        return usableCards.length == 0 ? this._cards : usableCards;
+    }
+
+    public sort(){
+        this._cards.sort((a : Card, b : Card) => {
+            return a.compareTo(b);
+        });
+    }
 }

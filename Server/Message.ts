@@ -1,4 +1,4 @@
-export default class Message{
+export default class Message{ 
     head : string;
     body : any;
 
