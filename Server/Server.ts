@@ -56,5 +56,11 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
                     break;
             }
         });
+
+        ws.on("close", (code : number) => {
+            Game.remove(player);
+            
+            console.log(`[Client ${player.name}] disconnected with code ${code}`);
+        });
     }
 });
