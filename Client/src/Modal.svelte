@@ -4,15 +4,7 @@
   
     export let open = false;
     export let showBackdrop = true;
-    export let onClosed;
     export let title = 'Modal title';
-    let Ready;
-  
-    const modalClose = (data) => {
-      if (onClosed) {
-        onClosed(data);
-      }
-    }
   
   </script>
   
@@ -25,9 +17,6 @@
           </div>
           <div class="modal-body">
             <slot></slot>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button bind:this={Ready} type="button" class="btn btn-success" on:click={() => modalClose('save')}>Ready</button>
           </div>
         </div>
       </div>

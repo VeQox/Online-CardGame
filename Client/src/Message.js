@@ -1,8 +1,8 @@
 export default class Message{ 
-    head : string;
-    body : any;
+    head;
+    body;
 
-    constructor(head : string, body : any){
+    constructor(head, body){
         this.head = head;
         this.body = body;
     }
@@ -20,7 +20,7 @@ export default class Message{
      * @param obj 
      * @returns 
      */
-    parse(obj : string){
+    parse(obj){
         return JSON.parse(obj);
     }
 }

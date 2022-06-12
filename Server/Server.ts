@@ -21,7 +21,8 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
     }
     else{
         let player : Player = new Player((request.url as string).substring(1), ws);
-        Game.add(player);
+        Game.add(player);      
+        Game.updateReady();
 
         console.log(`[Client ${player.name}] connected`);
 
@@ -30,7 +31,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
             const body = message.body;
             const head = message.head;
 
-            console.log(`[Client ${player.name}] sent ${message.toString()}`);
+            console.log(`[Client ${player.name}] sent ${msg.toString()}`);
 
             switch(head){
                 case "setReady":
