@@ -14,6 +14,7 @@
 | **newTrick**            | {string}              |                            "❤"                             | server |
 | **newRound**            | {string}              |                            "❤"                             | server |
 | **updatePoints**        | "{number}             |                            "-3"                            | server |
+| **selectedCards** | [{Card}, {Card}] |  [{ "type": "❤", value: "A" }, { "type": "❤", value: "K" }] | server |
 
 ## Variables
 

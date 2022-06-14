@@ -1,26 +1,24 @@
 export default class Message{ 
-    head : string;
-    body : any;
+    
+    private _head : Head;
+    private _body : any;
 
-    constructor(head : string, body : any){
-        this.head = head;
-        this.body = body;
+    constructor(head : Head, body : any){
+        this._head = head;
+        this._body = body;
     }
 
-    /**
-     * returns the message obj as a string
-     * @returns 
-     */
-    toString(){
+    public get head(){
+        return this._head;
+    }
+
+    public get body(){
+        return this._body;
+    }
+
+    public toString(){
         return JSON.stringify(this);
     }
-
-    /**
-     * returns the obj string as a JSON obj
-     * @param obj 
-     * @returns 
-     */
-    parse(obj : string){
-        return JSON.parse(obj);
-    }
 }
+
+type Head = "setReady" | "selectCard" | "setCalls" | "updateReady" | "startGame" | "updateCards" | "updateCurrentPlayer" | "newTrick" | "newRound" | "updatePoints" | "selectedCards";

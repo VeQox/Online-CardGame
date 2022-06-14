@@ -39,10 +39,6 @@ export default class Player{
         return this._cards.getAt(this.selectedCardIndex);
     }
 
-    public selectSuccessful(){
-        this.send(new Message("selectSuccessful", ""));
-    }
-
     public compareTo(other : Player){
         if(this.points > other.points) return 1;
         if(this.points < other.points) return -1;
@@ -70,15 +66,15 @@ export default class Player{
     }
 
     public startup(id : number, playercount : number){
-        this.send(new Message("start", {"id": id, "count": playercount}));
+        this.send(new Message("startGame", {"id": id, "count": playercount}));
     }
 
     public updateCards(){
-        this.send(new Message("server", this._cards));
+        this.send(new Message("updateCards", this._cards));
     }
 
     public updatePoints(){
-        this.send(new Message("server", this._points));
+        this.send(new Message("updatePoints", this._points));
     }
 
     public send(message : Message){

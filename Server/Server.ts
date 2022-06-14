@@ -48,8 +48,8 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
                     break;
                 case "selectCard":
                     if(Game.selectCard(player, body)){
-                        player.selectSuccessful();
 
+                        Game.updateSelectedCards();
                         
 
                         console.log(`[Client ${player.name}] selected ${JSON.stringify(player.selectedCard)}`);
