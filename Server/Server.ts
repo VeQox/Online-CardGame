@@ -8,6 +8,8 @@ const port = 8000;
 
 let Game : CardGame = new CardGame();
 
+console.log(CardGame.stack);
+
 const wss : WebSocketServer = new WebSocket.Server({port});
 
 wss.on("listening", () => {
@@ -35,6 +37,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
 
             switch(head){
                 case "setReady":
+                    if(Game.started) return false;
                     player.readyState = true;
                     Game.updateReady();
 

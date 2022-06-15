@@ -54,4 +54,8 @@ export default class Cards{
             return a.compareTo(b);
         });
     }
+
+    public display(){
+        return this._cards;
+    }
 }

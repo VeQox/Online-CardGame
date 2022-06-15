@@ -36,7 +36,7 @@ export default class CardGame {
         let tmp : Cards = new Cards();
         Card.types.forEach(type => {
             Card.values.forEach(value => {
-                let card: Card = new Card(Card.types.indexOf(type), Card.types.indexOf(value));
+                let card: Card = new Card(Card.types.indexOf(type), Card.values.indexOf(value));
                 tmp.add(card);
             });
         });
@@ -71,7 +71,7 @@ export default class CardGame {
     private withdrawCards(amount : number){
         let newCards : Cards[] = [];
         for(let i = 0; i < this._players.count(); i++){
-            let cards : Cards = {} as Cards;
+            let cards : Cards = new Cards();
             for (let i = 0; i < amount; i++) {
                 const card : Card = this.withdrawCard()
                 cards.add(card);

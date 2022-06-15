@@ -2,12 +2,16 @@
 	import Modal from "./Modal.svelte"
 	import Message from "./Message.js";
 
+	const types = ["♣","♠","♦","♥"];
+    const values = ["2","3","4","5","6","7","8","9","10","B","Q","K","A"];
+
 	const protocol = "ws";
 	const url = "localhost";
 	const port = 8000;
 
 	let name;
 	let points;
+	let cards = [];
 
 	let showModal = false;
 	let ReadyCount = "";
@@ -26,12 +30,19 @@
 			readyState = -1;
 		}
 		ws.onmessage = (ev) => {
-			console.log(ev.data);
+
 			let data = JSON.parse(ev.data);
+			console.log(data);
 
 			switch (data._head) {
 				case "updateReady":
 					ReadyCount = data._body;
+					break;
+				case "updateCards":
+					cards = data._body._cards;
+					break;
+				case "startGame":
+					showModal = false;
 					break;
 			}
 		}
@@ -39,6 +50,10 @@
 
 	function setReady(){
 		ws.send(new Message("setReady", ""))
+	}
+
+	function select(id){
+		console.log(id);
 	}
 </script>
 
@@ -82,6 +97,7 @@
 		</form>
 	</div>
 </nav>
+
 <Modal title="Waiting for Players" open={showModal} setReady={setReady}>
 	<div class="text-center">
 		<span class="spinner-border spinner-border-lg" role="status" aria-hidden="true"/>
@@ -93,6 +109,16 @@
 		<button type="button" class="btn btn-success" on:click={setReady}>Ready</button>
 	</div>
 </Modal>
+
+<div class="container">
+	<div class="row">
+		{#each cards as card, i}
+			<div id={i} class="col text-center" on:click={() => select(i)}>
+				{types[card._type]} {values[card._value]}
+			</div>
+		{/each}
+	</div>
+</div>
 
 <style>
 	img {
