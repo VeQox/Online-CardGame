@@ -1588,7 +1588,7 @@ var app = (function () {
     	return block;
     }
 
-    // (86:0) <Modal title="Waiting for Players" open={showModal} setReady={setReady}>
+    // (85:0) <Modal title="Waiting for Players" open={showModal} setReady={setReady}>
     function create_default_slot(ctx) {
     	let div0;
     	let span;
@@ -1615,15 +1615,15 @@ var app = (function () {
     			attr_dev(span, "class", "spinner-border spinner-border-lg");
     			attr_dev(span, "role", "status");
     			attr_dev(span, "aria-hidden", "true");
-    			add_location(span, file, 87, 2, 2341);
-    			add_location(p, file, 88, 2, 2426);
+    			add_location(span, file, 86, 2, 2339);
+    			add_location(p, file, 87, 2, 2424);
     			attr_dev(div0, "class", "text-center");
-    			add_location(div0, file, 86, 1, 2312);
+    			add_location(div0, file, 85, 1, 2310);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-success svelte-1yyob");
-    			add_location(button, file, 93, 2, 2526);
+    			add_location(button, file, 92, 2, 2524);
     			attr_dev(div1, "class", "modal-footer d-flex justify-content-center");
-    			add_location(div1, file, 92, 1, 2466);
+    			add_location(div1, file, 91, 1, 2464);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -1656,7 +1656,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(86:0) <Modal title=\\\"Waiting for Players\\\" open={showModal} setReady={setReady}>",
+    		source: "(85:0) <Modal title=\\\"Waiting for Players\\\" open={showModal} setReady={setReady}>",
     		ctx
     	});
 

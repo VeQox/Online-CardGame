@@ -65,24 +65,29 @@ export default class CardGame {
 
     public getNewHands(amount : number){
         this._usedCards = new Cards();
-        this._players.setCards(amount, this.withdrawCards);
+        this._players.cards = this.withdrawCards(amount);
     }
 
     private withdrawCards(amount : number){
-        let cards : Cards = {} as Cards;
-        for (let i = 0; i < amount; i++) {
-            const card : Card = this.withdrawCard();
-            cards.add(card);
-            this._usedCards.add(card);
+        let newCards : Cards[] = [];
+        for(let i = 0; i < this._players.count(); i++){
+            let cards : Cards = {} as Cards;
+            for (let i = 0; i < amount; i++) {
+                const card : Card = this.withdrawCard()
+                cards.add(card);
+                this._usedCards.add(card);
+            }
+            newCards.push(cards);
         }
-        return cards;
+        
+        return newCards;
     }
 
     private withdrawCard(){
         let card : Card;
         do {
             card = CardGame.stack.getAt(Math.floor(Math.random()*CardGame.stack.count()));
-        } while (this._usedCards.contains(card) === false);
+        } while (this._usedCards.contains(card) === true);
         return card;
     }
 

@@ -53,12 +53,6 @@ export default class Players{
         });
     }
 
-    public setCards(amount : number, getCards : (amount : number) => Cards){
-        this._players.forEach(player => {
-            player.cards = getCards(amount);
-        })
-    }
-
     public getWinnerOfTrick(){
         let winner : Player = this._players[0];
 
@@ -94,5 +88,11 @@ export default class Players{
         this._players.sort((a : Player, b : Player) => {
            return a.compareTo(b);
         });
+    }
+
+    public set cards(newCards : Cards[]){
+        this._players.forEach((player, i) => {
+            player.cards = newCards[i];
+        })
     }
 }

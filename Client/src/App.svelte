@@ -82,7 +82,6 @@
 		</form>
 	</div>
 </nav>
-
 <Modal title="Waiting for Players" open={showModal} setReady={setReady}>
 	<div class="text-center">
 		<span class="spinner-border spinner-border-lg" role="status" aria-hidden="true"/>
