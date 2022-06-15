@@ -121,4 +121,12 @@ export default class CardGame {
         this.getNewHands(this._cardsPerRound);
         this._players.startup();
     }
+
+    private updateCurrentPlayer(){
+        this._currentPlayer++;
+        if(this._currentPlayer == this._players.count()){
+            this._currentPlayer = 0;
+        }
+        this._players.emit(new Message("updateCurrentPlayer", this._currentPlayer));
+    }
 }

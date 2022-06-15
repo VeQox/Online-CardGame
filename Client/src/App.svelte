@@ -29,9 +29,9 @@
 			console.log(ev.data);
 			let data = JSON.parse(ev.data);
 
-			switch (data.head) {
+			switch (data._head) {
 				case "updateReady":
-					ReadyCount = data.body;
+					ReadyCount = data._body;
 					break;
 			}
 		}

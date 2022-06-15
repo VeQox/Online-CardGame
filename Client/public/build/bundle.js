@@ -1256,11 +1256,11 @@ var app = (function () {
     			attr_dev(input, "class", "formt-control text-center rounded-2 mx-1");
     			input.disabled = true;
     			attr_dev(input, "placeholder", "Name");
-    			add_location(input, file, 66, 4, 1669);
+    			add_location(input, file, 66, 4, 1671);
     			attr_dev(button, "class", "btn btn-outline-success mx-1 d-flex align-items-center w-auto svelte-1yyob");
     			button.disabled = true;
     			attr_dev(button, "type", "button");
-    			add_location(button, file, 67, 4, 1777);
+    			add_location(button, file, 67, 4, 1779);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -1339,10 +1339,10 @@ var app = (function () {
     			if_block.c();
     			attr_dev(input, "class", "formt-control text-center rounded-2 m-1");
     			attr_dev(input, "placeholder", "Name");
-    			add_location(input, file, 52, 4, 1153);
+    			add_location(input, file, 52, 4, 1155);
     			attr_dev(button, "class", "btn btn-outline-success m-1 d-flex align-items-center w-auto svelte-1yyob");
     			attr_dev(button, "type", "button");
-    			add_location(button, file, 53, 4, 1251);
+    			add_location(button, file, 53, 4, 1253);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -1465,9 +1465,9 @@ var app = (function () {
     			attr_dev(span0, "class", "spinner-border spinner-border-sm");
     			attr_dev(span0, "role", "status");
     			attr_dev(span0, "aria-hidden", "true");
-    			add_location(span0, file, 69, 6, 1937);
+    			add_location(span0, file, 69, 6, 1939);
     			attr_dev(span1, "class", "mx-2");
-    			add_location(span1, file, 70, 6, 2026);
+    			add_location(span1, file, 70, 6, 2028);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span0, anchor);
@@ -1561,9 +1561,9 @@ var app = (function () {
     			attr_dev(span0, "class", "spinner-border spinner-border-sm");
     			attr_dev(span0, "role", "status");
     			attr_dev(span0, "aria-hidden", "true");
-    			add_location(span0, file, 55, 6, 1401);
+    			add_location(span0, file, 55, 6, 1403);
     			attr_dev(span1, "class", "m-2");
-    			add_location(span1, file, 56, 6, 1490);
+    			add_location(span1, file, 56, 6, 1492);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span0, anchor);
@@ -1615,15 +1615,15 @@ var app = (function () {
     			attr_dev(span, "class", "spinner-border spinner-border-lg");
     			attr_dev(span, "role", "status");
     			attr_dev(span, "aria-hidden", "true");
-    			add_location(span, file, 87, 2, 2339);
-    			add_location(p, file, 88, 2, 2424);
+    			add_location(span, file, 87, 2, 2341);
+    			add_location(p, file, 88, 2, 2426);
     			attr_dev(div0, "class", "text-center");
-    			add_location(div0, file, 86, 1, 2310);
+    			add_location(div0, file, 86, 1, 2312);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-success svelte-1yyob");
-    			add_location(button, file, 93, 2, 2524);
+    			add_location(button, file, 93, 2, 2526);
     			attr_dev(div1, "class", "modal-footer d-flex justify-content-center");
-    			add_location(div1, file, 92, 1, 2464);
+    			add_location(div1, file, 92, 1, 2466);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -1714,19 +1714,19 @@ var app = (function () {
     			attr_dev(img, "class", "mx-2 svelte-1yyob");
     			if (!src_url_equal(img.src, img_src_value = "github.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "github logo");
-    			add_location(img, file, 47, 3, 915);
+    			add_location(img, file, 47, 3, 917);
     			attr_dev(a, "href", "https://github.com/VeQox/Online-CardGame");
-    			add_location(a, file, 46, 2, 859);
+    			add_location(a, file, 46, 2, 861);
     			attr_dev(input, "class", "form-control m-1 text-center");
     			attr_dev(input, "placeholder", "Points");
     			input.disabled = true;
-    			add_location(input, file, 50, 3, 1025);
+    			add_location(input, file, 50, 3, 1027);
     			attr_dev(form, "class", "d-flex align-items-center");
-    			add_location(form, file, 49, 2, 980);
+    			add_location(form, file, 49, 2, 982);
     			attr_dev(div, "class", "container-fluid");
-    			add_location(div, file, 45, 1, 826);
+    			add_location(div, file, 45, 1, 828);
     			attr_dev(nav, "class", "navbar navbar-light bg-light");
-    			add_location(nav, file, 44, 0, 781);
+    			add_location(nav, file, 44, 0, 783);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1838,9 +1838,9 @@ var app = (function () {
     			console.log(ev.data);
     			let data = JSON.parse(ev.data);
 
-    			switch (data.head) {
+    			switch (data._head) {
     				case "updateReady":
-    					$$invalidate(3, ReadyCount = data.body);
+    					$$invalidate(3, ReadyCount = data._body);
     					break;
     			}
     		};
