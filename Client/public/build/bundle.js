@@ -1247,12 +1247,18 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[18] = list[i];
-    	child_ctx[20] = i;
+    	child_ctx[22] = list[i];
     	return child_ctx;
     }
 
-    // (89:3) {:else}
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[22] = list[i];
+    	child_ctx[26] = i;
+    	return child_ctx;
+    }
+
+    // (99:3) {:else}
     function create_else_block_1(ctx) {
     	let input;
     	let t;
@@ -1261,8 +1267,8 @@ var app = (function () {
     	let dispose;
 
     	function select_block_type_2(ctx, dirty) {
-    		if (/*readyState*/ ctx[5] == 0) return create_if_block_3;
-    		if (/*readyState*/ ctx[5] == 1) return create_if_block_4;
+    		if (/*readyState*/ ctx[8] == 0) return create_if_block_5;
+    		if (/*readyState*/ ctx[8] == 1) return create_if_block_6;
     		return create_else_block_2;
     	}
 
@@ -1278,11 +1284,11 @@ var app = (function () {
     			attr_dev(input, "class", "formt-control text-center rounded-2 mx-1");
     			input.disabled = true;
     			attr_dev(input, "placeholder", "Name");
-    			add_location(input, file, 89, 4, 2284);
+    			add_location(input, file, 99, 4, 2522);
     			attr_dev(button, "class", "btn btn-outline-success mx-1 d-flex align-items-center w-auto svelte-1yyob");
     			button.disabled = true;
     			attr_dev(button, "type", "button");
-    			add_location(button, file, 90, 4, 2392);
+    			add_location(button, file, 100, 4, 2630);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -1293,8 +1299,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler_2*/ ctx[13]),
-    					listen_dev(button, "click", /*Connect*/ ctx[8], false, false, false)
+    					listen_dev(input, "input", /*input_input_handler_2*/ ctx[16]),
+    					listen_dev(button, "click", /*Connect*/ ctx[11], false, false, false)
     				];
 
     				mounted = true;
@@ -1329,15 +1335,15 @@ var app = (function () {
     		block,
     		id: create_else_block_1.name,
     		type: "else",
-    		source: "(89:3) {:else}",
+    		source: "(99:3) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:3) {#if readyState == -1}
-    function create_if_block(ctx) {
+    // (85:3) {#if readyState == -1}
+    function create_if_block_2(ctx) {
     	let input;
     	let t;
     	let button;
@@ -1345,8 +1351,8 @@ var app = (function () {
     	let dispose;
 
     	function select_block_type_1(ctx, dirty) {
-    		if (/*readyState*/ ctx[5] == 0) return create_if_block_1;
-    		if (/*readyState*/ ctx[5] == 1) return create_if_block_2;
+    		if (/*readyState*/ ctx[8] == 0) return create_if_block_3;
+    		if (/*readyState*/ ctx[8] == 1) return create_if_block_4;
     		return create_else_block;
     	}
 
@@ -1361,10 +1367,10 @@ var app = (function () {
     			if_block.c();
     			attr_dev(input, "class", "formt-control text-center rounded-2 m-1");
     			attr_dev(input, "placeholder", "Name");
-    			add_location(input, file, 75, 4, 1768);
+    			add_location(input, file, 85, 4, 2006);
     			attr_dev(button, "class", "btn btn-outline-success m-1 d-flex align-items-center w-auto svelte-1yyob");
     			attr_dev(button, "type", "button");
-    			add_location(button, file, 76, 4, 1866);
+    			add_location(button, file, 86, 4, 2104);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -1375,8 +1381,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler_1*/ ctx[12]),
-    					listen_dev(button, "click", /*Connect*/ ctx[8], false, false, false)
+    					listen_dev(input, "input", /*input_input_handler_1*/ ctx[15]),
+    					listen_dev(button, "click", /*Connect*/ ctx[11], false, false, false)
     				];
 
     				mounted = true;
@@ -1409,16 +1415,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block.name,
+    		id: create_if_block_2.name,
     		type: "if",
-    		source: "(75:3) {#if readyState == -1}",
+    		source: "(85:3) {#if readyState == -1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (99:5) {:else}
+    // (109:5) {:else}
     function create_else_block_2(ctx) {
     	let t;
 
@@ -1438,15 +1444,15 @@ var app = (function () {
     		block,
     		id: create_else_block_2.name,
     		type: "else",
-    		source: "(99:5) {:else}",
+    		source: "(109:5) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (97:31) 
-    function create_if_block_4(ctx) {
+    // (107:31) 
+    function create_if_block_6(ctx) {
     	let t;
 
     	const block = {
@@ -1463,17 +1469,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4.name,
+    		id: create_if_block_6.name,
     		type: "if",
-    		source: "(97:31) ",
+    		source: "(107:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (92:5) {#if readyState == 0 }
-    function create_if_block_3(ctx) {
+    // (102:5) {#if readyState == 0 }
+    function create_if_block_5(ctx) {
     	let span0;
     	let t0;
     	let span1;
@@ -1487,9 +1493,9 @@ var app = (function () {
     			attr_dev(span0, "class", "spinner-border spinner-border-sm");
     			attr_dev(span0, "role", "status");
     			attr_dev(span0, "aria-hidden", "true");
-    			add_location(span0, file, 92, 6, 2552);
+    			add_location(span0, file, 102, 6, 2790);
     			attr_dev(span1, "class", "mx-2");
-    			add_location(span1, file, 93, 6, 2641);
+    			add_location(span1, file, 103, 6, 2879);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span0, anchor);
@@ -1505,16 +1511,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3.name,
+    		id: create_if_block_5.name,
     		type: "if",
-    		source: "(92:5) {#if readyState == 0 }",
+    		source: "(102:5) {#if readyState == 0 }",
     		ctx
     	});
 
     	return block;
     }
 
-    // (85:5) {:else}
+    // (95:5) {:else}
     function create_else_block(ctx) {
     	let t;
 
@@ -1534,15 +1540,15 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(85:5) {:else}",
+    		source: "(95:5) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:31) 
-    function create_if_block_2(ctx) {
+    // (93:31) 
+    function create_if_block_4(ctx) {
     	let t;
 
     	const block = {
@@ -1559,17 +1565,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2.name,
+    		id: create_if_block_4.name,
     		type: "if",
-    		source: "(83:31) ",
+    		source: "(93:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:5) {#if readyState == 0 }
-    function create_if_block_1(ctx) {
+    // (88:5) {#if readyState == 0 }
+    function create_if_block_3(ctx) {
     	let span0;
     	let t0;
     	let span1;
@@ -1583,9 +1589,9 @@ var app = (function () {
     			attr_dev(span0, "class", "spinner-border spinner-border-sm");
     			attr_dev(span0, "role", "status");
     			attr_dev(span0, "aria-hidden", "true");
-    			add_location(span0, file, 78, 6, 2016);
+    			add_location(span0, file, 88, 6, 2254);
     			attr_dev(span1, "class", "m-2");
-    			add_location(span1, file, 79, 6, 2105);
+    			add_location(span1, file, 89, 6, 2343);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span0, anchor);
@@ -1601,16 +1607,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1.name,
+    		id: create_if_block_3.name,
     		type: "if",
-    		source: "(78:5) {#if readyState == 0 }",
+    		source: "(88:5) {#if readyState == 0 }",
     		ctx
     	});
 
     	return block;
     }
 
-    // (109:0) <Modal title="Waiting for Players" open={showModal} setReady={setReady}>
+    // (119:0) <Modal title="Waiting for Players" open={showModal} setReady={setReady}>
     function create_default_slot(ctx) {
     	let div0;
     	let span;
@@ -1629,7 +1635,7 @@ var app = (function () {
     			span = element("span");
     			t0 = space();
     			p = element("p");
-    			t1 = text(/*ReadyCount*/ ctx[4]);
+    			t1 = text(/*ReadyCount*/ ctx[7]);
     			t2 = space();
     			div1 = element("div");
     			button = element("button");
@@ -1637,15 +1643,15 @@ var app = (function () {
     			attr_dev(span, "class", "spinner-border spinner-border-lg");
     			attr_dev(span, "role", "status");
     			attr_dev(span, "aria-hidden", "true");
-    			add_location(span, file, 110, 2, 2954);
-    			add_location(p, file, 111, 2, 3039);
+    			add_location(span, file, 120, 2, 3192);
+    			add_location(p, file, 121, 2, 3277);
     			attr_dev(div0, "class", "text-center");
-    			add_location(div0, file, 109, 1, 2925);
+    			add_location(div0, file, 119, 1, 3163);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-success svelte-1yyob");
-    			add_location(button, file, 116, 2, 3139);
+    			add_location(button, file, 126, 2, 3377);
     			attr_dev(div1, "class", "modal-footer d-flex justify-content-center");
-    			add_location(div1, file, 115, 1, 3079);
+    			add_location(div1, file, 125, 1, 3317);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -1658,12 +1664,12 @@ var app = (function () {
     			append_dev(div1, button);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*setReady*/ ctx[9], false, false, false);
+    				dispose = listen_dev(button, "click", /*setReady*/ ctx[12], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*ReadyCount*/ 16) set_data_dev(t1, /*ReadyCount*/ ctx[4]);
+    			if (dirty & /*ReadyCount*/ 128) set_data_dev(t1, /*ReadyCount*/ ctx[7]);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div0);
@@ -1678,27 +1684,27 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(109:0) <Modal title=\\\"Waiting for Players\\\" open={showModal} setReady={setReady}>",
+    		source: "(119:0) <Modal title=\\\"Waiting for Players\\\" open={showModal} setReady={setReady}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (123:2) {#each cards as card, i}
-    function create_each_block(ctx) {
+    // (133:2) {#each cards as card, i}
+    function create_each_block_1(ctx) {
     	let div;
-    	let t0_value = /*types*/ ctx[6][/*card*/ ctx[18]._type] + "";
+    	let t0_value = /*types*/ ctx[9][/*card*/ ctx[22]._type] + "";
     	let t0;
     	let t1;
-    	let t2_value = /*values*/ ctx[7][/*card*/ ctx[18]._value] + "";
+    	let t2_value = /*values*/ ctx[10][/*card*/ ctx[22]._value] + "";
     	let t2;
     	let t3;
     	let mounted;
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[14](/*i*/ ctx[20]);
+    		return /*click_handler*/ ctx[17](/*i*/ ctx[26]);
     	}
 
     	const block = {
@@ -1708,9 +1714,9 @@ var app = (function () {
     			t1 = space();
     			t2 = text(t2_value);
     			t3 = space();
-    			attr_dev(div, "id", /*i*/ ctx[20]);
+    			attr_dev(div, "id", /*i*/ ctx[26]);
     			attr_dev(div, "class", "col text-center");
-    			add_location(div, file, 123, 3, 3318);
+    			add_location(div, file, 133, 3, 3556);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1726,8 +1732,8 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*cards*/ 4 && t0_value !== (t0_value = /*types*/ ctx[6][/*card*/ ctx[18]._type] + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*cards*/ 4 && t2_value !== (t2_value = /*values*/ ctx[7][/*card*/ ctx[18]._value] + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*cards*/ 4 && t0_value !== (t0_value = /*types*/ ctx[9][/*card*/ ctx[22]._type] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*cards*/ 4 && t2_value !== (t2_value = /*values*/ ctx[10][/*card*/ ctx[22]._value] + "")) set_data_dev(t2, t2_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
@@ -1738,9 +1744,231 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(133:2) {#each cards as card, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (141:0) {#if readyState == 1}
+    function create_if_block(ctx) {
+    	let div1;
+    	let div0;
+    	let form;
+    	let input;
+    	let t;
+    	let mounted;
+    	let dispose;
+    	let if_block = /*selectedCards*/ ctx[5] != undefined && create_if_block_1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			form = element("form");
+    			input = element("input");
+    			t = space();
+    			if (if_block) if_block.c();
+    			attr_dev(input, "class", "form-control w-50 m-1 text-center");
+    			attr_dev(input, "placeholder", "Calls");
+    			add_location(input, file, 144, 3, 3839);
+    			attr_dev(form, "class", "d-flex align-items-center");
+    			add_location(form, file, 143, 2, 3794);
+    			attr_dev(div0, "class", "col text-center");
+    			add_location(div0, file, 142, 1, 3761);
+    			attr_dev(div1, "class", "row");
+    			attr_dev(div1, "disabled", "");
+    			add_location(div1, file, 141, 0, 3732);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, div0);
+    			append_dev(div0, form);
+    			append_dev(form, input);
+    			set_input_value(input, /*calls*/ ctx[3]);
+    			append_dev(div1, t);
+    			if (if_block) if_block.m(div1, null);
+
+    			if (!mounted) {
+    				dispose = listen_dev(input, "input", /*input_input_handler_3*/ ctx[18]);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*calls*/ 8 && input.value !== /*calls*/ ctx[3]) {
+    				set_input_value(input, /*calls*/ ctx[3]);
+    			}
+
+    			if (/*selectedCards*/ ctx[5] != undefined) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block_1(ctx);
+    					if_block.c();
+    					if_block.m(div1, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div1);
+    			if (if_block) if_block.d();
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(141:0) {#if readyState == 1}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (149:1) {#if selectedCards != undefined}
+    function create_if_block_1(ctx) {
+    	let div;
+    	let t0_value = /*types*/ ctx[9][/*forcedType*/ ctx[4]._type] + "";
+    	let t0;
+    	let t1;
+    	let t2_value = /*values*/ ctx[10][/*forcedType*/ ctx[4]._value] + "";
+    	let t2;
+    	let t3;
+    	let each_1_anchor;
+    	let each_value = /*selectedCards*/ ctx[5];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			t2 = text(t2_value);
+    			t3 = space();
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    			attr_dev(div, "class", "col text-center");
+    			add_location(div, file, 149, 2, 3990);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
+    			append_dev(div, t2);
+    			insert_dev(target, t3, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*forcedType*/ 16 && t0_value !== (t0_value = /*types*/ ctx[9][/*forcedType*/ ctx[4]._type] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*forcedType*/ 16 && t2_value !== (t2_value = /*values*/ ctx[10][/*forcedType*/ ctx[4]._value] + "")) set_data_dev(t2, t2_value);
+
+    			if (dirty & /*values, selectedCards, types*/ 1568) {
+    				each_value = /*selectedCards*/ ctx[5];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(t3);
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(149:1) {#if selectedCards != undefined}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (153:2) {#each selectedCards as card}
+    function create_each_block(ctx) {
+    	let div;
+    	let t0_value = /*types*/ ctx[9][/*card*/ ctx[22]._type] + "";
+    	let t0;
+    	let t1;
+    	let t2_value = /*values*/ ctx[10][/*card*/ ctx[22]._value] + "";
+    	let t2;
+    	let t3;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			t2 = text(t2_value);
+    			t3 = space();
+    			attr_dev(div, "class", "col text-center");
+    			add_location(div, file, 153, 2, 4124);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
+    			append_dev(div, t2);
+    			append_dev(div, t3);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*selectedCards*/ 32 && t0_value !== (t0_value = /*types*/ ctx[9][/*card*/ ctx[22]._type] + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*selectedCards*/ 32 && t2_value !== (t2_value = /*values*/ ctx[10][/*card*/ ctx[22]._value] + "")) set_data_dev(t2, t2_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(123:2) {#each cards as card, i}",
+    		source: "(153:2) {#each selectedCards as card}",
     		ctx
     	});
 
@@ -1762,36 +1990,40 @@ var app = (function () {
     	let t3;
     	let div2;
     	let div1;
+    	let t4;
+    	let if_block1_anchor;
     	let current;
     	let mounted;
     	let dispose;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*readyState*/ ctx[5] == -1) return create_if_block;
+    		if (/*readyState*/ ctx[8] == -1) return create_if_block_2;
     		return create_else_block_1;
     	}
 
     	let current_block_type = select_block_type(ctx);
-    	let if_block = current_block_type(ctx);
+    	let if_block0 = current_block_type(ctx);
 
     	modal = new Modal({
     			props: {
     				title: "Waiting for Players",
-    				open: /*showModal*/ ctx[3],
-    				setReady: /*setReady*/ ctx[9],
+    				open: /*showModal*/ ctx[6],
+    				setReady: /*setReady*/ ctx[12],
     				$$slots: { default: [create_default_slot] },
     				$$scope: { ctx }
     			},
     			$$inline: true
     		});
 
-    	let each_value = /*cards*/ ctx[2];
-    	validate_each_argument(each_value);
+    	let each_value_1 = /*cards*/ ctx[2];
+    	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
-    	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
+
+    	let if_block1 = /*readyState*/ ctx[8] == 1 && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -1803,7 +2035,7 @@ var app = (function () {
     			form = element("form");
     			input = element("input");
     			t1 = space();
-    			if_block.c();
+    			if_block0.c();
     			t2 = space();
     			create_component(modal.$$.fragment);
     			t3 = space();
@@ -1814,26 +2046,29 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
+    			t4 = space();
+    			if (if_block1) if_block1.c();
+    			if_block1_anchor = empty();
     			attr_dev(img, "class", "mx-2 svelte-1yyob");
     			if (!src_url_equal(img.src, img_src_value = "github.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "github logo");
-    			add_location(img, file, 70, 3, 1530);
+    			add_location(img, file, 80, 3, 1768);
     			attr_dev(a, "href", "https://github.com/VeQox/Online-CardGame");
-    			add_location(a, file, 69, 2, 1474);
+    			add_location(a, file, 79, 2, 1712);
     			attr_dev(input, "class", "form-control m-1 text-center");
     			attr_dev(input, "placeholder", "Points");
     			input.disabled = true;
-    			add_location(input, file, 73, 3, 1640);
+    			add_location(input, file, 83, 3, 1878);
     			attr_dev(form, "class", "d-flex align-items-center");
-    			add_location(form, file, 72, 2, 1595);
+    			add_location(form, file, 82, 2, 1833);
     			attr_dev(div0, "class", "container-fluid");
-    			add_location(div0, file, 68, 1, 1441);
+    			add_location(div0, file, 78, 1, 1679);
     			attr_dev(nav, "class", "navbar navbar-light bg-light");
-    			add_location(nav, file, 67, 0, 1396);
+    			add_location(nav, file, 77, 0, 1634);
     			attr_dev(div1, "class", "row");
-    			add_location(div1, file, 121, 1, 3268);
+    			add_location(div1, file, 131, 1, 3506);
     			attr_dev(div2, "class", "container");
-    			add_location(div2, file, 120, 0, 3242);
+    			add_location(div2, file, 130, 0, 3480);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1848,7 +2083,7 @@ var app = (function () {
     			append_dev(form, input);
     			set_input_value(input, /*points*/ ctx[1]);
     			append_dev(form, t1);
-    			if_block.m(form, null);
+    			if_block0.m(form, null);
     			insert_dev(target, t2, anchor);
     			mount_component(modal, target, anchor);
     			insert_dev(target, t3, anchor);
@@ -1859,10 +2094,13 @@ var app = (function () {
     				each_blocks[i].m(div1, null);
     			}
 
+    			insert_dev(target, t4, anchor);
+    			if (if_block1) if_block1.m(target, anchor);
+    			insert_dev(target, if_block1_anchor, anchor);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(input, "input", /*input_input_handler*/ ctx[11]);
+    				dispose = listen_dev(input, "input", /*input_input_handler*/ ctx[14]);
     				mounted = true;
     			}
     		},
@@ -1871,39 +2109,39 @@ var app = (function () {
     				set_input_value(input, /*points*/ ctx[1]);
     			}
 
-    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
-    				if_block.p(ctx, dirty);
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block0) {
+    				if_block0.p(ctx, dirty);
     			} else {
-    				if_block.d(1);
-    				if_block = current_block_type(ctx);
+    				if_block0.d(1);
+    				if_block0 = current_block_type(ctx);
 
-    				if (if_block) {
-    					if_block.c();
-    					if_block.m(form, null);
+    				if (if_block0) {
+    					if_block0.c();
+    					if_block0.m(form, null);
     				}
     			}
 
     			const modal_changes = {};
-    			if (dirty & /*showModal*/ 8) modal_changes.open = /*showModal*/ ctx[3];
+    			if (dirty & /*showModal*/ 64) modal_changes.open = /*showModal*/ ctx[6];
 
-    			if (dirty & /*$$scope, ReadyCount*/ 2097168) {
+    			if (dirty & /*$$scope, ReadyCount*/ 134217856) {
     				modal_changes.$$scope = { dirty, ctx };
     			}
 
     			modal.$set(modal_changes);
 
-    			if (dirty & /*select, values, cards, types*/ 1220) {
-    				each_value = /*cards*/ ctx[2];
-    				validate_each_argument(each_value);
+    			if (dirty & /*select, values, cards, types*/ 9732) {
+    				each_value_1 = /*cards*/ ctx[2];
+    				validate_each_argument(each_value_1);
     				let i;
 
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context(ctx, each_value, i);
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i] = create_each_block_1(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(div1, null);
     					}
@@ -1913,7 +2151,20 @@ var app = (function () {
     					each_blocks[i].d(1);
     				}
 
-    				each_blocks.length = each_value.length;
+    				each_blocks.length = each_value_1.length;
+    			}
+
+    			if (/*readyState*/ ctx[8] == 1) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block(ctx);
+    					if_block1.c();
+    					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
     			}
     		},
     		i: function intro(local) {
@@ -1927,12 +2178,15 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(nav);
-    			if_block.d();
+    			if_block0.d();
     			if (detaching) detach_dev(t2);
     			destroy_component(modal, detaching);
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(div2);
     			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(t4);
+    			if (if_block1) if_block1.d(detaching);
+    			if (detaching) detach_dev(if_block1_anchor);
     			mounted = false;
     			dispose();
     		}
@@ -1963,6 +2217,9 @@ var app = (function () {
     	let cards = [];
     	let currentPlayer;
     	let playerID;
+    	let calls;
+    	let forcedType;
+    	let selectedCards;
     	let showModal = false;
     	let ReadyCount = "";
     	let readyState = -1;
@@ -1970,15 +2227,15 @@ var app = (function () {
 
     	function Connect() {
     		ws = new WebSocket(`${protocol}://${url}:${port}/${name}`);
-    		$$invalidate(5, readyState = 0);
+    		$$invalidate(8, readyState = 0);
 
     		ws.onopen = () => {
-    			$$invalidate(5, readyState = 1);
-    			$$invalidate(3, showModal = true);
+    			$$invalidate(8, readyState = 1);
+    			$$invalidate(6, showModal = true);
     		};
 
     		ws.onerror = () => {
-    			$$invalidate(5, readyState = -1);
+    			$$invalidate(8, readyState = -1);
     		};
 
     		ws.onmessage = ev => {
@@ -1987,17 +2244,24 @@ var app = (function () {
 
     			switch (data._head) {
     				case "updateReady":
-    					$$invalidate(4, ReadyCount = data._body);
+    					$$invalidate(7, ReadyCount = data._body);
     					break;
     				case "updateCards":
     					$$invalidate(2, cards = data._body._cards);
     					break;
     				case "startGame":
-    					$$invalidate(3, showModal = false);
+    					$$invalidate(6, showModal = false);
     					playerID = data._body.id;
+    					console.log(data._body.players);
     					break;
     				case "updateCurrentPlayer":
     					currentPlayer = data._body;
+    					break;
+    				case "selectedCards":
+    					$$invalidate(5, selectedCards = data._body._cards);
+    					break;
+    				case "newTrick":
+    					$$invalidate(4, forcedType = data._body);
     					break;
     			}
     		};
@@ -2036,6 +2300,11 @@ var app = (function () {
 
     	const click_handler = i => select(i);
 
+    	function input_input_handler_3() {
+    		calls = this.value;
+    		$$invalidate(3, calls);
+    	}
+
     	$$self.$capture_state = () => ({
     		Modal,
     		Message,
@@ -2049,6 +2318,9 @@ var app = (function () {
     		cards,
     		currentPlayer,
     		playerID,
+    		calls,
+    		forcedType,
+    		selectedCards,
     		showModal,
     		ReadyCount,
     		readyState,
@@ -2064,9 +2336,12 @@ var app = (function () {
     		if ('cards' in $$props) $$invalidate(2, cards = $$props.cards);
     		if ('currentPlayer' in $$props) currentPlayer = $$props.currentPlayer;
     		if ('playerID' in $$props) playerID = $$props.playerID;
-    		if ('showModal' in $$props) $$invalidate(3, showModal = $$props.showModal);
-    		if ('ReadyCount' in $$props) $$invalidate(4, ReadyCount = $$props.ReadyCount);
-    		if ('readyState' in $$props) $$invalidate(5, readyState = $$props.readyState);
+    		if ('calls' in $$props) $$invalidate(3, calls = $$props.calls);
+    		if ('forcedType' in $$props) $$invalidate(4, forcedType = $$props.forcedType);
+    		if ('selectedCards' in $$props) $$invalidate(5, selectedCards = $$props.selectedCards);
+    		if ('showModal' in $$props) $$invalidate(6, showModal = $$props.showModal);
+    		if ('ReadyCount' in $$props) $$invalidate(7, ReadyCount = $$props.ReadyCount);
+    		if ('readyState' in $$props) $$invalidate(8, readyState = $$props.readyState);
     		if ('ws' in $$props) ws = $$props.ws;
     	};
 
@@ -2078,6 +2353,9 @@ var app = (function () {
     		name,
     		points,
     		cards,
+    		calls,
+    		forcedType,
+    		selectedCards,
     		showModal,
     		ReadyCount,
     		readyState,
@@ -2089,7 +2367,8 @@ var app = (function () {
     		input_input_handler,
     		input_input_handler_1,
     		input_input_handler_2,
-    		click_handler
+    		click_handler,
+    		input_input_handler_3
     	];
     }
 

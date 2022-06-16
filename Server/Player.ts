@@ -2,6 +2,7 @@ import Cards from "./Cards";
 import Card from "./Card";
 import WebSocket from "ws";
 import Message from "./Message";
+import Players from "./Players";
 
 export default class Player{
     public name : string;
@@ -65,8 +66,12 @@ export default class Player{
         return this.selectedCardIndex !== -1;
     }
 
-    public startup(id : number, playercount : number){
-        this.send(new Message("startGame", {"id": id, "count": playercount}));
+    public startup(id : number, playercount : number, players : Player[]){
+        let names : string[] = [];
+        players.forEach(player => {
+            names.push(player.name);
+        });
+        this.send(new Message("startGame", {"id": id, "count": playercount, "players": names}));
     }
 
     public updateCards(){

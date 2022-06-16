@@ -14,6 +14,9 @@
 	let cards = [];
 	let currentPlayer;
 	let playerID;
+	let calls;
+	let forcedType;
+	let selectedCards;
 
 	let showModal = false;
 	let ReadyCount = "";
@@ -46,9 +49,16 @@
 				case "startGame":
 					showModal = false;
 					playerID = data._body.id;
+					console.log(data._body.players);
 					break;
 				case "updateCurrentPlayer":
 					currentPlayer = data._body;
+					break;
+				case "selectedCards":
+					selectedCards = data._body._cards;
+					break;
+				case "newTrick":
+					forcedType = data._body;
 					break;
 			}
 		}
@@ -127,6 +137,29 @@
 		{/each}
 	</div>
 </div>
+
+{#if readyState == 1}
+<div class="row" disabled>
+	<div class="col text-center">
+		<form class="d-flex align-items-center">
+			<input class="form-control w-50 m-1 text-center" placeholder="Calls" bind:value={calls}>	
+		</form>
+	</div>
+	
+	{#if selectedCards != undefined}
+		<div class="col text-center">
+			{types[forcedType._type]} {values[forcedType._value]}
+		</div>
+		{#each selectedCards as card}
+		<div class="col text-center">
+			{types[card._type]} {values[card._value]}
+		</div>
+		{/each}
+	{/if}
+	
+</div>
+{/if}
+
 
 <style>
 	img {

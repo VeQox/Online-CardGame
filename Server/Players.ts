@@ -73,7 +73,7 @@ export default class Players{
     public startup(){
         let id = 0;
         this._players.forEach(player => {
-            player.startup(id, this.count());
+            player.startup(id, this.count(), this._players);
             id++;
         }); 
     }
@@ -95,4 +95,12 @@ export default class Players{
             player.cards = newCards[i];
         })
     }
+
+    public contains(player : Player){
+        this._players.forEach(_player => {
+            if(_player == player) return true;
+        });
+        return false;
+    }
+
 }

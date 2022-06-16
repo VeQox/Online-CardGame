@@ -54,8 +54,11 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
 
                         Game.updateSelectedCards();
                         
+                        if(Game.isStartingPlayer(player)){
+                            Game.newTrick(player);
+                        }
 
-                        console.log(`[Client ${player.name}] selected ${JSON.stringify(player.selectedCard)}`);
+                        console.log(`[Client ${player.name}] selected ${JSON.stringify(player.selectedCard())}`);
                     }
                     break;
             }

@@ -98,6 +98,12 @@ export default class CardGame {
         player.selectedCardIndex = selected;
         this._selectedCards.add(player.selectedCard());
 
+        if(this.isStartingPlayer(player)){
+            this.newTrick(player);
+        }
+
+        this.updateCurrentPlayer();
+
         return true;
     }
 
@@ -134,5 +140,13 @@ export default class CardGame {
             this._currentPlayer = 0;
         }
         this._players.emit(new Message("updateCurrentPlayer", this._currentPlayer));
+    }
+
+    public isStartingPlayer(player : Player){
+        return this._players.indexOf(player) == this._startingPlayer;
+    }
+
+    public newTrick(startingPlayer : Player){
+        this._players.emit(new Message("newTrick", startingPlayer.selectedCard()));
     }
 }
