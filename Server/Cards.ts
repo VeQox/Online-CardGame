@@ -39,9 +39,9 @@ export default class Cards{
     }
 
     public contains(card : Card){
-        this._cards.forEach(_card => {
+        for(let _card of this._cards){
             if(_card == card) return true;
-        });
+        }
         return false;
     }
 

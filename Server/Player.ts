@@ -16,6 +16,7 @@ export default class Player{
     private _connection : WebSocket;
 
     public readyState : boolean;
+    public hasSetCall : boolean;
 
     constructor(name : string, connection : WebSocket){
         this.name = name;
@@ -26,6 +27,7 @@ export default class Player{
         this.calledHits = 0;
         this.selectedCardIndex = -1;
         this.readyState = false;
+        this.hasSetCall = false;
     }
 
     public set cards(cards : Cards){

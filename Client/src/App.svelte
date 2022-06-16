@@ -17,8 +17,10 @@
 	let calls;
 	let forcedType;
 	let selectedCards;
+	let playerCalls;
 
-	let showModal = false;
+	let showReady = false;
+	let showCalls = false;
 	let ReadyCount = "";
 	let readyState = -1;
 
@@ -29,7 +31,7 @@
 		readyState = 0;
 		ws.onopen = () => {
 			readyState = 1;
-			showModal = true;
+			showReady = true;
 		}
 		ws.onerror = () => {
 			readyState = -1;
@@ -47,7 +49,7 @@
 					cards = data._body._cards;
 					break;
 				case "startGame":
-					showModal = false;
+					showReady = false;
 					playerID = data._body.id;
 					console.log(data._body.players);
 					break;
@@ -59,6 +61,18 @@
 					break;
 				case "newTrick":
 					forcedType = data._body;
+					break;
+				case "setCalls":
+					playerCalls = data._body;
+					showCalls = true;
+					break;
+				case "startRound":
+					showCalls = false;
+					break;
+				case "updateCalls":
+					if(showCalls == true){
+						playerCalls = data._body;
+					}
 					break;
 			}
 		}
@@ -72,6 +86,10 @@
 		console.log(`ID = ${playerID}, CurrentPlayer = ${currentPlayer}, CardIndex = ${id}`);
 		if(playerID != currentPlayer) return;
 		ws.send(new Message("selectCard", id));
+	}
+
+	function setCalls(){
+		ws.send(new Message("setCalls", calls));
 	}
 </script>
 
@@ -116,7 +134,7 @@
 	</div>
 </nav>
 
-<Modal title="Waiting for Players" open={showModal} setReady={setReady}>
+<Modal title="Waiting for Players" open={showReady}>
 	<div class="text-center">
 		<span class="spinner-border spinner-border-lg" role="status" aria-hidden="true"/>
 		<p>
@@ -125,6 +143,32 @@
 	</div>
 	<div class="modal-footer d-flex justify-content-center">
 		<button type="button" class="btn btn-success" on:click={setReady}>Ready</button>
+	</div>
+</Modal>
+
+<Modal title="SetCalls" open={showCalls}>
+	<div class="container">
+		<div class="row">
+			{#each cards as card}
+				<div class="col text-center">
+					{types[card._type]} {values[card._value]}
+				</div>
+			{/each}
+		</div>
+		<div class="row">
+			{#each playerCalls as pCalls}
+				<div class="col text-center">
+					{pCalls} 
+				</div>
+
+			{/each}
+		</div>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+		<form class="d-flex align-items-center">
+			<input class="form-control w-50 m-1 text-center" placeholder="Calls" bind:value={calls}>	
+			<button type="button" class="btn btn-success" on:click={setCalls}>Lock</button>
+		</form>
 	</div>
 </Modal>
 
@@ -139,25 +183,18 @@
 </div>
 
 {#if readyState == 1}
-<div class="row" disabled>
-	<div class="col text-center">
-		<form class="d-flex align-items-center">
-			<input class="form-control w-50 m-1 text-center" placeholder="Calls" bind:value={calls}>	
-		</form>
+	<div class="row">
+		{#if selectedCards != undefined}
+			<div class="col text-center">
+				{types[forcedType._type]} {values[forcedType._value]}
+			</div>
+			{#each selectedCards as card}
+			<div class="col text-center">
+				{types[card._type]} {values[card._value]}
+			</div>
+			{/each}
+		{/if}
 	</div>
-	
-	{#if selectedCards != undefined}
-		<div class="col text-center">
-			{types[forcedType._type]} {values[forcedType._value]}
-		</div>
-		{#each selectedCards as card}
-		<div class="col text-center">
-			{types[card._type]} {values[card._value]}
-		</div>
-		{/each}
-	{/if}
-	
-</div>
 {/if}
 
 

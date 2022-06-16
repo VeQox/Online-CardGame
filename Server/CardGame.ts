@@ -149,4 +149,21 @@ export default class CardGame {
     public newTrick(startingPlayer : Player){
         this._players.emit(new Message("newTrick", startingPlayer.selectedCard()));
     }
+
+    public setCalls(){
+        let currentPlayer = this._players.getAt(this._currentPlayer);
+        currentPlayer.send(new Message("setCalls", this._players.calledHits));
+        currentPlayer.hasSetCall = true;
+        this._players.emit(new Message("updateCalls", this._players.calledHits))
+        this.updateCurrentPlayer();
+    }
+
+    public get haveSetCalls(){
+        return this._players.haveSetCalls();
+    }
+    
+    public startRound(){
+        this._players.emit(new Message("startRound", ""));
+    }
+
 }

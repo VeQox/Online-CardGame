@@ -97,10 +97,28 @@ export default class Players{
     }
 
     public contains(player : Player){
-        this._players.forEach(_player => {
+        for(let _player of this._players){
             if(_player == player) return true;
-        });
+        }
         return false;
     }
 
+    public get calledHits(){
+        let calls : number[] = [];
+        this._players.forEach(player => {
+            calls.push(player.calledHits);
+        });
+        return calls;
+    }
+
+    public haveSetCalls(){
+        let returnval = true;
+        this._players.forEach(player => {
+            if(!player.hasSetCall){
+                returnval = false;
+                return;
+            } 
+        });
+        return returnval;
+    }
 }

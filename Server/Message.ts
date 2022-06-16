@@ -21,4 +21,4 @@ export default class Message{
     }
 }
 
-type Head = "setReady" | "selectCard" | "setCalls" | "updateReady" | "startGame" | "updateCards" | "updateCurrentPlayer" | "newTrick" | "newRound" | "updatePoints" | "selectedCards";
+type Head = "updateCalls" |"setReady" | "selectCard" | "setCalls" | "updateReady" | "startGame" | "updateCards" | "updateCurrentPlayer" | "newTrick" | "newRound" | "updatePoints" | "selectedCards" | "startRound";

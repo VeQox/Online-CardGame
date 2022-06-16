@@ -44,10 +44,16 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
                     if(Game.areReady() && Game.readyCount >= 2){
                         Game.start();
                         Game.updateCards();
+                        Game.setCalls();
                     }
                     break;
                 case "setCalls":
                     player.calledHits = body;
+                    if(Game.haveSetCalls){
+                        Game.startRound();
+                        return; 
+                    }
+                    Game.setCalls();
                     break;
                 case "selectCard":
                     if(Game.selectCard(player, body)){
