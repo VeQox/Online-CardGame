@@ -12,6 +12,8 @@
 	let name;
 	let points;
 	let cards = [];
+	let currentPlayer;
+	let playerID;
 
 	let showModal = false;
 	let ReadyCount = "";
@@ -43,6 +45,10 @@
 					break;
 				case "startGame":
 					showModal = false;
+					playerID = data._body.id;
+					break;
+				case "updateCurrentPlayer":
+					currentPlayer = data._body;
 					break;
 			}
 		}
@@ -53,7 +59,9 @@
 	}
 
 	function select(id){
-		console.log(id);
+		console.log(`ID = ${playerID}, CurrentPlayer = ${currentPlayer}, CardIndex = ${id}`);
+		if(playerID != currentPlayer) return;
+		ws.send(new Message("selectCard", id));
 	}
 </script>
 

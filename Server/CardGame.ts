@@ -125,6 +125,7 @@ export default class CardGame {
         this.started = true;
         this.getNewHands(this._cardsPerRound);
         this._players.startup();
+        this._players.emit(new Message("updateCurrentPlayer", this._currentPlayer));
     }
 
     private updateCurrentPlayer(){
