@@ -1,3 +1,4 @@
+import Card from "./Card";
 import Cards from "./Cards";
 import Message from "./Message";
 import Player from "./Player";
@@ -25,13 +26,6 @@ export default class Players{
         return this._players.indexOf(player);
     }
 
-    public haveSelected(){
-        this._players.forEach(player => {
-            if(!player.hasSelected()) return false;
-        });
-        return true;
-    }
-
     public areReady(){
         this._players.forEach(player => {
             if(!player.readyState) return false;
@@ -50,6 +44,7 @@ export default class Players{
     public calcPoints(){
         this._players.forEach(player => {
             player.calcPoints();
+            player.updatePoints();
         });
     }
 
@@ -96,6 +91,10 @@ export default class Players{
         })
     }
 
+    public get cardsLength(){
+        return this._players[0].cards.count();
+    }
+
     public contains(player : Player){
         for(let _player of this._players){
             if(_player == player) return true;
@@ -120,5 +119,38 @@ export default class Players{
             } 
         });
         return returnval;
+    }
+
+    public get haveSelected(){
+        for(let player of this._players){
+            if(!player.hasSelected()) return false;
+        }
+        return true;
+    }
+
+    public removeCards(cards : Cards){
+        this._players.forEach(player => {
+            cards.cards().forEach(card => {
+                player.cards.remove(card);
+            });
+        });
+    }
+
+    public resetCalls(){
+        this._players.forEach(player => {
+            player.calledHits = 0;
+        });
+    }
+
+    public resetSelectedCard(){
+        this._players.forEach(player => {
+            player.selectedCardIndex = -1;
+        });
+    }
+
+    public resetHits(){
+        this._players.forEach(player => {
+            player.actualHits = 0;
+        });
     }
 }

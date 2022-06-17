@@ -166,4 +166,38 @@ export default class CardGame {
         this._players.emit(new Message("startRound", ""));
     }
 
+    public get haveSelected(){
+        return this._players.haveSelected;
+    }
+
+    public endTrick(){
+        let winner = this._players.getWinnerOfTrick();
+        winner.actualHits++;
+
+        this._startingPlayer = this._players.indexOf(winner);
+        this._currentPlayer = this._startingPlayer;
+
+        this._players.removeCards(this._selectedCards);
+        this._players.resetSelectedCard();
+    }
+
+    public isRoundOver(){
+        if(this._players.cardsLength == 0) return true;
+        return false;
+    }
+
+    public endRound(){
+        this._players.calcPoints();
+        this._players.resetCalls();
+        this._players.resetHits();
+        this.updateCardsPerRound();
+        this.getNewHands(this._cardsPerRound);
+        this._players.updateCards();
+    }
+
+    private updateCardsPerRound(){
+        if(this._cardsPerRound == 10) this._reverse = true;
+        if(this._reverse) this._cardsPerRound--;
+        else this._cardsPerRound++;
+    }
 }

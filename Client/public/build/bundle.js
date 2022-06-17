@@ -2081,9 +2081,6 @@ var app = (function () {
     	let t0_value = /*types*/ ctx[11][/*forcedType*/ ctx[4]._type] + "";
     	let t0;
     	let t1;
-    	let t2_value = /*values*/ ctx[12][/*forcedType*/ ctx[4]._value] + "";
-    	let t2;
-    	let t3;
     	let each_1_anchor;
     	let each_value = /*selectedCards*/ ctx[5];
     	validate_each_argument(each_value);
@@ -2098,8 +2095,6 @@ var app = (function () {
     			div = element("div");
     			t0 = text(t0_value);
     			t1 = space();
-    			t2 = text(t2_value);
-    			t3 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
@@ -2112,9 +2107,7 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			append_dev(div, t0);
-    			append_dev(div, t1);
-    			append_dev(div, t2);
-    			insert_dev(target, t3, anchor);
+    			insert_dev(target, t1, anchor);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(target, anchor);
@@ -2124,7 +2117,6 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty[0] & /*forcedType*/ 16 && t0_value !== (t0_value = /*types*/ ctx[11][/*forcedType*/ ctx[4]._type] + "")) set_data_dev(t0, t0_value);
-    			if (dirty[0] & /*forcedType*/ 16 && t2_value !== (t2_value = /*values*/ ctx[12][/*forcedType*/ ctx[4]._value] + "")) set_data_dev(t2, t2_value);
 
     			if (dirty[0] & /*values, selectedCards, types*/ 6176) {
     				each_value = /*selectedCards*/ ctx[5];
@@ -2152,7 +2144,7 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
-    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(t1);
     			destroy_each(each_blocks, detaching);
     			if (detaching) detach_dev(each_1_anchor);
     		}
@@ -2187,7 +2179,7 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			attr_dev(div, "class", "col text-center");
-    			add_location(div, file, 191, 3, 4984);
+    			add_location(div, file, 191, 3, 4956);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);

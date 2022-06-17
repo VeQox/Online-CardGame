@@ -186,7 +186,7 @@
 	<div class="row">
 		{#if selectedCards != undefined}
 			<div class="col text-center">
-				{types[forcedType._type]} {values[forcedType._value]}
+				{types[forcedType._type]}
 			</div>
 			{#each selectedCards as card}
 			<div class="col text-center">

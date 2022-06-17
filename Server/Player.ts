@@ -21,7 +21,7 @@ export default class Player{
     constructor(name : string, connection : WebSocket){
         this.name = name;
         this._connection = connection;
-        this._cards = {} as Cards;
+        this._cards = new Cards();
         this._points = 0;
         this.actualHits = 0;
         this.calledHits = 0;
@@ -32,6 +32,10 @@ export default class Player{
 
     public set cards(cards : Cards){
         this._cards = cards;
+    }
+
+    public get cards(){
+        return this._cards;
     }
 
     public points(){
@@ -77,6 +81,7 @@ export default class Player{
     }
 
     public updateCards(){
+        this._cards.sort();
         this.send(new Message("updateCards", this._cards));
     }
 
