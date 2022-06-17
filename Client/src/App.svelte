@@ -57,7 +57,14 @@
 					currentPlayer = data._body;
 					break;
 				case "selectedCards":
-					selectedCards = data._body._cards;
+					if(data._body._cards.length == 0){
+						forcedType = undefined;
+						selectedCards = undefined;
+					}
+					else{
+						selectedCards = data._body._cards;
+					}
+					
 					break;
 				case "newTrick":
 					forcedType = data._body;

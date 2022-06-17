@@ -193,6 +193,10 @@ export default class CardGame {
         this.updateCardsPerRound();
         this.getNewHands(this._cardsPerRound);
         this._players.updateCards();
+        this.setCalls();
+        this._selectedCards = new Cards();
+        this._players.emit(new Message("selectedCards", this._selectedCards));
+        this._players.emit(new Message(""))
     }
 
     private updateCardsPerRound(){

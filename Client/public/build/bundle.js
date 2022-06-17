@@ -1270,7 +1270,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (117:3) {:else}
+    // (124:3) {:else}
     function create_else_block_1(ctx) {
     	let input;
     	let t;
@@ -1296,11 +1296,11 @@ var app = (function () {
     			attr_dev(input, "class", "formt-control text-center rounded-2 mx-1");
     			input.disabled = true;
     			attr_dev(input, "placeholder", "Name");
-    			add_location(input, file, 117, 4, 2900);
+    			add_location(input, file, 124, 4, 3042);
     			attr_dev(button, "class", "btn btn-outline-success mx-1 d-flex align-items-center w-auto svelte-1yyob");
     			button.disabled = true;
     			attr_dev(button, "type", "button");
-    			add_location(button, file, 118, 4, 3008);
+    			add_location(button, file, 125, 4, 3150);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -1347,14 +1347,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1.name,
     		type: "else",
-    		source: "(117:3) {:else}",
+    		source: "(124:3) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:3) {#if readyState == -1}
+    // (110:3) {#if readyState == -1}
     function create_if_block_2(ctx) {
     	let input;
     	let t;
@@ -1379,10 +1379,10 @@ var app = (function () {
     			if_block.c();
     			attr_dev(input, "class", "formt-control text-center rounded-2 m-1");
     			attr_dev(input, "placeholder", "Name");
-    			add_location(input, file, 103, 4, 2384);
+    			add_location(input, file, 110, 4, 2526);
     			attr_dev(button, "class", "btn btn-outline-success m-1 d-flex align-items-center w-auto svelte-1yyob");
     			attr_dev(button, "type", "button");
-    			add_location(button, file, 104, 4, 2482);
+    			add_location(button, file, 111, 4, 2624);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -1429,14 +1429,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(103:3) {#if readyState == -1}",
+    		source: "(110:3) {#if readyState == -1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (127:5) {:else}
+    // (134:5) {:else}
     function create_else_block_2(ctx) {
     	let t;
 
@@ -1456,14 +1456,14 @@ var app = (function () {
     		block,
     		id: create_else_block_2.name,
     		type: "else",
-    		source: "(127:5) {:else}",
+    		source: "(134:5) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (125:31) 
+    // (132:31) 
     function create_if_block_6(ctx) {
     	let t;
 
@@ -1483,14 +1483,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(125:31) ",
+    		source: "(132:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (120:5) {#if readyState == 0 }
+    // (127:5) {#if readyState == 0 }
     function create_if_block_5(ctx) {
     	let span0;
     	let t0;
@@ -1505,9 +1505,9 @@ var app = (function () {
     			attr_dev(span0, "class", "spinner-border spinner-border-sm");
     			attr_dev(span0, "role", "status");
     			attr_dev(span0, "aria-hidden", "true");
-    			add_location(span0, file, 120, 6, 3168);
+    			add_location(span0, file, 127, 6, 3310);
     			attr_dev(span1, "class", "mx-2");
-    			add_location(span1, file, 121, 6, 3257);
+    			add_location(span1, file, 128, 6, 3399);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span0, anchor);
@@ -1525,14 +1525,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(120:5) {#if readyState == 0 }",
+    		source: "(127:5) {#if readyState == 0 }",
     		ctx
     	});
 
     	return block;
     }
 
-    // (113:5) {:else}
+    // (120:5) {:else}
     function create_else_block(ctx) {
     	let t;
 
@@ -1552,14 +1552,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(113:5) {:else}",
+    		source: "(120:5) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (111:31) 
+    // (118:31) 
     function create_if_block_4(ctx) {
     	let t;
 
@@ -1579,14 +1579,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(111:31) ",
+    		source: "(118:31) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (106:5) {#if readyState == 0 }
+    // (113:5) {#if readyState == 0 }
     function create_if_block_3(ctx) {
     	let span0;
     	let t0;
@@ -1601,9 +1601,9 @@ var app = (function () {
     			attr_dev(span0, "class", "spinner-border spinner-border-sm");
     			attr_dev(span0, "role", "status");
     			attr_dev(span0, "aria-hidden", "true");
-    			add_location(span0, file, 106, 6, 2632);
+    			add_location(span0, file, 113, 6, 2774);
     			attr_dev(span1, "class", "m-2");
-    			add_location(span1, file, 107, 6, 2721);
+    			add_location(span1, file, 114, 6, 2863);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span0, anchor);
@@ -1621,14 +1621,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(106:5) {#if readyState == 0 }",
+    		source: "(113:5) {#if readyState == 0 }",
     		ctx
     	});
 
     	return block;
     }
 
-    // (137:0) <Modal title="Waiting for Players" open={showReady}>
+    // (144:0) <Modal title="Waiting for Players" open={showReady}>
     function create_default_slot_1(ctx) {
     	let div0;
     	let span;
@@ -1655,15 +1655,15 @@ var app = (function () {
     			attr_dev(span, "class", "spinner-border spinner-border-lg");
     			attr_dev(span, "role", "status");
     			attr_dev(span, "aria-hidden", "true");
-    			add_location(span, file, 138, 2, 3550);
-    			add_location(p, file, 139, 2, 3635);
+    			add_location(span, file, 145, 2, 3692);
+    			add_location(p, file, 146, 2, 3777);
     			attr_dev(div0, "class", "text-center");
-    			add_location(div0, file, 137, 1, 3521);
+    			add_location(div0, file, 144, 1, 3663);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-success svelte-1yyob");
-    			add_location(button, file, 144, 2, 3735);
+    			add_location(button, file, 151, 2, 3877);
     			attr_dev(div1, "class", "modal-footer d-flex justify-content-center");
-    			add_location(div1, file, 143, 1, 3675);
+    			add_location(div1, file, 150, 1, 3817);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -1696,14 +1696,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(137:0) <Modal title=\\\"Waiting for Players\\\" open={showReady}>",
+    		source: "(144:0) <Modal title=\\\"Waiting for Players\\\" open={showReady}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (152:3) {#each cards as card}
+    // (159:3) {#each cards as card}
     function create_each_block_3(ctx) {
     	let div;
     	let t0_value = /*types*/ ctx[11][/*card*/ ctx[25]._type] + "";
@@ -1721,7 +1721,7 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			attr_dev(div, "class", "col text-center");
-    			add_location(div, file, 152, 4, 3958);
+    			add_location(div, file, 159, 4, 4100);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1743,14 +1743,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(152:3) {#each cards as card}",
+    		source: "(159:3) {#each cards as card}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (159:3) {#each playerCalls as pCalls}
+    // (166:3) {#each playerCalls as pCalls}
     function create_each_block_2(ctx) {
     	let div;
     	let t0_value = /*pCalls*/ ctx[30] + "";
@@ -1763,7 +1763,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(div, "class", "col text-center");
-    			add_location(div, file, 159, 4, 4130);
+    			add_location(div, file, 166, 4, 4272);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1782,14 +1782,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(159:3) {#each playerCalls as pCalls}",
+    		source: "(166:3) {#each playerCalls as pCalls}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (149:0) <Modal title="SetCalls" open={showCalls}>
+    // (156:0) <Modal title="SetCalls" open={showCalls}>
     function create_default_slot(ctx) {
     	let div2;
     	let div0;
@@ -1843,21 +1843,21 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Lock";
     			attr_dev(div0, "class", "row");
-    			add_location(div0, file, 150, 2, 3909);
+    			add_location(div0, file, 157, 2, 4051);
     			attr_dev(div1, "class", "row");
-    			add_location(div1, file, 157, 2, 4073);
+    			add_location(div1, file, 164, 2, 4215);
     			attr_dev(div2, "class", "container");
-    			add_location(div2, file, 149, 1, 3882);
+    			add_location(div2, file, 156, 1, 4024);
     			attr_dev(input, "class", "form-control w-50 m-1 text-center");
     			attr_dev(input, "placeholder", "Calls");
-    			add_location(input, file, 168, 3, 4328);
+    			add_location(input, file, 175, 3, 4470);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-success svelte-1yyob");
-    			add_location(button, file, 169, 3, 4422);
+    			add_location(button, file, 176, 3, 4564);
     			attr_dev(form, "class", "d-flex align-items-center");
-    			add_location(form, file, 167, 2, 4283);
+    			add_location(form, file, 174, 2, 4425);
     			attr_dev(div3, "class", "modal-footer d-flex justify-content-center");
-    			add_location(div3, file, 166, 1, 4223);
+    			add_location(div3, file, 173, 1, 4365);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -1959,14 +1959,14 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(149:0) <Modal title=\\\"SetCalls\\\" open={showCalls}>",
+    		source: "(156:0) <Modal title=\\\"SetCalls\\\" open={showCalls}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (177:2) {#each cards as card, i}
+    // (184:2) {#each cards as card, i}
     function create_each_block_1(ctx) {
     	let div;
     	let t0_value = /*types*/ ctx[11][/*card*/ ctx[25]._type] + "";
@@ -1991,7 +1991,7 @@ var app = (function () {
     			t3 = space();
     			attr_dev(div, "id", /*i*/ ctx[29]);
     			attr_dev(div, "class", "col text-center");
-    			add_location(div, file, 177, 3, 4611);
+    			add_location(div, file, 184, 3, 4753);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2021,14 +2021,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(177:2) {#each cards as card, i}",
+    		source: "(184:2) {#each cards as card, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (185:0) {#if readyState == 1}
+    // (192:0) {#if readyState == 1}
     function create_if_block(ctx) {
     	let div;
     	let if_block = /*selectedCards*/ ctx[5] != undefined && create_if_block_1(ctx);
@@ -2038,7 +2038,7 @@ var app = (function () {
     			div = element("div");
     			if (if_block) if_block.c();
     			attr_dev(div, "class", "row");
-    			add_location(div, file, 185, 1, 4788);
+    			add_location(div, file, 192, 1, 4930);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2068,14 +2068,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(185:0) {#if readyState == 1}",
+    		source: "(192:0) {#if readyState == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (187:2) {#if selectedCards != undefined}
+    // (194:2) {#if selectedCards != undefined}
     function create_if_block_1(ctx) {
     	let div;
     	let t0_value = /*types*/ ctx[11][/*forcedType*/ ctx[4]._type] + "";
@@ -2102,7 +2102,7 @@ var app = (function () {
 
     			each_1_anchor = empty();
     			attr_dev(div, "class", "col text-center");
-    			add_location(div, file, 187, 3, 4846);
+    			add_location(div, file, 194, 3, 4988);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2154,14 +2154,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(187:2) {#if selectedCards != undefined}",
+    		source: "(194:2) {#if selectedCards != undefined}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (191:3) {#each selectedCards as card}
+    // (198:3) {#each selectedCards as card}
     function create_each_block(ctx) {
     	let div;
     	let t0_value = /*types*/ ctx[11][/*card*/ ctx[25]._type] + "";
@@ -2179,7 +2179,7 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			attr_dev(div, "class", "col text-center");
-    			add_location(div, file, 191, 3, 4956);
+    			add_location(div, file, 198, 3, 5098);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2201,7 +2201,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(191:3) {#each selectedCards as card}",
+    		source: "(198:3) {#each selectedCards as card}",
     		ctx
     	});
 
@@ -2298,23 +2298,23 @@ var app = (function () {
     			attr_dev(img, "class", "mx-2 svelte-1yyob");
     			if (!src_url_equal(img.src, img_src_value = "github.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "github logo");
-    			add_location(img, file, 98, 3, 2146);
+    			add_location(img, file, 105, 3, 2288);
     			attr_dev(a, "href", "https://github.com/VeQox/Online-CardGame");
-    			add_location(a, file, 97, 2, 2090);
+    			add_location(a, file, 104, 2, 2232);
     			attr_dev(input, "class", "form-control m-1 text-center");
     			attr_dev(input, "placeholder", "Points");
     			input.disabled = true;
-    			add_location(input, file, 101, 3, 2256);
+    			add_location(input, file, 108, 3, 2398);
     			attr_dev(form, "class", "d-flex align-items-center");
-    			add_location(form, file, 100, 2, 2211);
+    			add_location(form, file, 107, 2, 2353);
     			attr_dev(div0, "class", "container-fluid");
-    			add_location(div0, file, 96, 1, 2057);
+    			add_location(div0, file, 103, 1, 2199);
     			attr_dev(nav, "class", "navbar navbar-light bg-light");
-    			add_location(nav, file, 95, 0, 2012);
+    			add_location(nav, file, 102, 0, 2154);
     			attr_dev(div1, "class", "row");
-    			add_location(div1, file, 175, 1, 4561);
+    			add_location(div1, file, 182, 1, 4703);
     			attr_dev(div2, "class", "container");
-    			add_location(div2, file, 174, 0, 4535);
+    			add_location(div2, file, 181, 0, 4677);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2520,7 +2520,12 @@ var app = (function () {
     					currentPlayer = data._body;
     					break;
     				case "selectedCards":
-    					$$invalidate(5, selectedCards = data._body._cards);
+    					if (data._body._cards.length == 0) {
+    						$$invalidate(4, forcedType = undefined);
+    						$$invalidate(5, selectedCards = undefined);
+    					} else {
+    						$$invalidate(5, selectedCards = data._body._cards);
+    					}
     					break;
     				case "newTrick":
     					$$invalidate(4, forcedType = data._body);
