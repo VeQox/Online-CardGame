@@ -51,10 +51,27 @@ export default class CardGame {
         return this._players.readyCount
     }
 
+    public get isRoundOver(){
+        if(this._players.cardsAmount == 0) return true;
+        return false;
+    }
+
+    public get haveSelected(){
+        return this._players.haveSelected;
+    }
+
+    public get haveSetCalls(){
+        return this._players.haveSetCalls;
+    }
+
+    public get areReady(){
+        return this._players.areReady;
+    }
+
     public add(player : Player){
         this._players.add(player);
     }
-
+ 
     public remove(player : Player){
         this._players.remove(player);
     }
@@ -119,10 +136,6 @@ export default class CardGame {
         this._players.updateCards();
     }
 
-    public areReady(){
-        return this._players.areReady;
-    }
-
     public start(){
         this._startingPlayer = 0;
         this._currentPlayer = 0;
@@ -157,17 +170,9 @@ export default class CardGame {
         this._players.emit(new Message("updateCalls", this._players.calledHits))
         this.updateCurrentPlayer();
     }
-
-    public get haveSetCalls(){
-        return this._players.haveSetCalls;
-    }
     
     public startRound(){
         this._players.emit(new Message("startRound", ""));
-    }
-
-    public get haveSelected(){
-        return this._players.haveSelected;
     }
 
     public endTrick(){
@@ -179,11 +184,6 @@ export default class CardGame {
 
         this._players.removeCards(this._selectedCards);
         this._players.resetSelectedCard();
-    }
-
-    public get isRoundOver(){
-        if(this._players.cardsLength == 0) return true;
-        return false;
     }
 
     public endRound(){

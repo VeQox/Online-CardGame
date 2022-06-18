@@ -46,6 +46,10 @@ export default class Player{
         return this._cards.getAt(this.selectedCardIndex);
     }
 
+    public get hasSelected(){
+        return this.selectedCardIndex !== -1;
+    }
+
     public compareTo(other : Player){
         if(this.points > other.points) return 1;
         if(this.points < other.points) return -1;
@@ -66,10 +70,6 @@ export default class Player{
         }
 
         this.actualHits = 0;
-    }
-
-    public get hasSelected(){
-        return this.selectedCardIndex !== -1;
     }
 
     public startup(id : number, playercount : number, players : Player[]){

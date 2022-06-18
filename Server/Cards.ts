@@ -3,6 +3,14 @@ import Card from "./Card";
 export default class Cards{
     private _cards : Card[] = [];
 
+    public get count(){
+        return this._cards.length;
+    }
+    
+    public get cards(){
+        return this._cards;
+    }
+
     public add(card : Card){
         this._cards.push(card);
     }
@@ -13,10 +21,6 @@ export default class Cards{
 
     public removeAt(index : number){
         this._cards.splice(index, 1);
-    }
-
-    public get cards(){
-        return this._cards;
     }
 
     public getAt(index : number){
@@ -43,10 +47,6 @@ export default class Cards{
             if(_card == card) return true;
         }
         return false;
-    }
-
-    public get count(){
-        return this._cards.length;
     }
 
     public sort(){
