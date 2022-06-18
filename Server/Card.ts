@@ -3,7 +3,7 @@ export default class Card{
     private _value : number;
 
     static types : string[] = ["♣","♠","♦","♥"];
-    static values : string[] = ["2","3","4","5","6","7","8","9","10","B","Q","K","A"];
+    static values : string[] = ["","3","4","5","6","7","8","9","10","B","Q","K","A"];
 
     public constructor(type : number, value : number){
         this._type = type;
@@ -19,7 +19,7 @@ export default class Card{
     }
 
     public toString(){
-        return `${this.type} ${this.value}`;
+        return `{"type": "${this.type}", "value": "${this.value}"}`;
     }
 
     public compareTo(other : Card){

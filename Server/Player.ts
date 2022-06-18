@@ -38,11 +38,11 @@ export default class Player{
         return this._cards;
     }
 
-    public points(){
+    public get points(){
         return this._points;
     }
 
-    public selectedCard(){
+    public get selectedCard(){
         return this._cards.getAt(this.selectedCardIndex);
     }
 
@@ -68,7 +68,7 @@ export default class Player{
         this.actualHits = 0;
     }
 
-    public hasSelected(){
+    public get hasSelected(){
         return this.selectedCardIndex !== -1;
     }
 

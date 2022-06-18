@@ -60,13 +60,12 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
 
                         Game.updateSelectedCards();
 
-                        console.log(`[Client ${player.name}] selected ${JSON.stringify(player.selectedCard())}`);
+                        console.log(`[Client ${player.name}] selected ${JSON.stringify(player.selectedCard)}`);
 
                         if(Game.haveSelected){
                             
                             Game.endTrick();
-                            console.log(Game.isRoundOver());
-                            if(Game.isRoundOver()){
+                            if(Game.isRoundOver){
                                 Game.endRound();
                             }
                         }

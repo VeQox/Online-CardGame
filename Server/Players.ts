@@ -6,7 +6,7 @@ import Player from "./Player";
 export default class Players{
     private _players : Player[] = [];
 
-    public count(){
+    public get count(){
         return this._players.length;
     }
 
@@ -26,14 +26,14 @@ export default class Players{
         return this._players.indexOf(player);
     }
 
-    public areReady(){
+    public get areReady(){
         this._players.forEach(player => {
             if(!player.readyState) return false;
         });
         return true;
     }
 
-    public readyCount(){
+    public get readyCount(){
         let count = 0;
         this._players.forEach(player => {
             if(player.readyState) count++;
@@ -52,7 +52,7 @@ export default class Players{
         let winner : Player = this._players[0];
 
         this._players.forEach(player => {
-            const compareValue = player.selectedCard().compareTo(winner.selectedCard())
+            const compareValue = player.selectedCard.compareTo(winner.selectedCard)
             if(compareValue == 1) winner = player;
         });
 
@@ -68,7 +68,7 @@ export default class Players{
     public startup(){
         let id = 0;
         this._players.forEach(player => {
-            player.startup(id, this.count(), this._players);
+            player.startup(id, this.count, this._players);
             id++;
         }); 
     }
@@ -92,7 +92,7 @@ export default class Players{
     }
 
     public get cardsLength(){
-        return this._players[0].cards.count();
+        return this._players[0].cards.count;
     }
 
     public contains(player : Player){
@@ -110,7 +110,7 @@ export default class Players{
         return calls;
     }
 
-    public haveSetCalls(){
+    public get haveSetCalls(){
         let returnval = true;
         this._players.forEach(player => {
             if(!player.hasSetCall){
@@ -123,14 +123,14 @@ export default class Players{
 
     public get haveSelected(){
         for(let player of this._players){
-            if(!player.hasSelected()) return false;
+            if(!player.hasSelected) return false;
         }
         return true;
     }
 
     public removeCards(cards : Cards){
         this._players.forEach(player => {
-            cards.cards().forEach(card => {
+            cards.cards.forEach(card => {
                 player.cards.remove(card);
             });
         });

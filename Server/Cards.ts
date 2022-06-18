@@ -15,7 +15,7 @@ export default class Cards{
         this._cards.splice(index, 1);
     }
 
-    public cards(){
+    public get cards(){
         return this._cards;
     }
 
@@ -45,7 +45,7 @@ export default class Cards{
         return false;
     }
 
-    public count(){
+    public get count(){
         return this._cards.length;
     }
 
@@ -53,9 +53,5 @@ export default class Cards{
         this._cards.sort((a : Card, b : Card) => {
             return a.compareTo(b);
         });
-    }
-
-    public display(){
-        return this._cards;
     }
 }

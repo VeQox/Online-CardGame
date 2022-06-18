@@ -44,11 +44,11 @@ export default class CardGame {
     }
 
     public get count(){
-        return this._players.count();
+        return this._players.count;
     }
 
     public get readyCount(){
-        return this._players.readyCount()
+        return this._players.readyCount
     }
 
     public add(player : Player){
@@ -70,7 +70,7 @@ export default class CardGame {
 
     private withdrawCards(amount : number){
         let newCards : Cards[] = [];
-        for(let i = 0; i < this._players.count(); i++){
+        for(let i = 0; i < this._players.count; i++){
             let cards : Cards = new Cards();
             for (let i = 0; i < amount; i++) {
                 const card : Card = this.withdrawCard()
@@ -86,17 +86,17 @@ export default class CardGame {
     private withdrawCard(){
         let card : Card;
         do {
-            card = CardGame.stack.getAt(Math.floor(Math.random()*CardGame.stack.count()));
+            card = CardGame.stack.getAt(Math.floor(Math.random()*CardGame.stack.count));
         } while (this._usedCards.contains(card) === true);
         return card;
     }
 
     public selectCard(player : Player, selected : number){
-        if(player.hasSelected()) return false;
+        if(player.hasSelected) return false;
         if(player != this._players.getAt(this._currentPlayer)) return false;
 
         player.selectedCardIndex = selected;
-        this._selectedCards.add(player.selectedCard());
+        this._selectedCards.add(player.selectedCard);
 
         if(this.isStartingPlayer(player)){
             this.newTrick(player);
@@ -120,7 +120,7 @@ export default class CardGame {
     }
 
     public areReady(){
-        return this._players.areReady();
+        return this._players.areReady;
     }
 
     public start(){
@@ -136,7 +136,7 @@ export default class CardGame {
 
     private updateCurrentPlayer(){
         this._currentPlayer++;
-        if(this._currentPlayer == this._players.count()){
+        if(this._currentPlayer == this._players.count){
             this._currentPlayer = 0;
         }
         this._players.emit(new Message("updateCurrentPlayer", this._currentPlayer));
@@ -147,7 +147,7 @@ export default class CardGame {
     }
 
     public newTrick(startingPlayer : Player){
-        this._players.emit(new Message("newTrick", startingPlayer.selectedCard()));
+        this._players.emit(new Message("newTrick", startingPlayer.selectedCard));
     }
 
     public setCalls(){
@@ -159,7 +159,7 @@ export default class CardGame {
     }
 
     public get haveSetCalls(){
-        return this._players.haveSetCalls();
+        return this._players.haveSetCalls;
     }
     
     public startRound(){
@@ -181,7 +181,7 @@ export default class CardGame {
         this._players.resetSelectedCard();
     }
 
-    public isRoundOver(){
+    public get isRoundOver(){
         if(this._players.cardsLength == 0) return true;
         return false;
     }
@@ -196,7 +196,7 @@ export default class CardGame {
         this.setCalls();
         this._selectedCards = new Cards();
         this._players.emit(new Message("selectedCards", this._selectedCards));
-        this._players.emit(new Message(""))
+        this._players.emit(new Message("updateCards", this._selectedCards));
     }
 
     private updateCardsPerRound(){
