@@ -8,8 +8,6 @@ const port = 8000;
 
 let Game : CardGame = new CardGame();
 
-console.log(CardGame.stack);
-
 const wss : WebSocketServer = new WebSocket.Server({port});
 
 wss.on("listening", () => {
@@ -24,7 +22,6 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
     else{
         let player : Player = new Player((request.url as string).substring(1), ws);
         Game.add(player);      
-        Game.updateReady();
 
         console.log(`[Client ${player.name}] connected`);
 
@@ -37,15 +34,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
 
             switch(head){
                 case "setReady":
-                    if(Game.started) return false;
-                    player.readyState = true;
-                    Game.updateReady();
-
-                    if(Game.areReady && Game.readyCount >= 2){
-                        Game.start();
-                        Game.updateCards();
-                        Game.setCalls();
-                    }
+                    Game.setReady(player);
                     break;
                 case "setCalls":
                     player.calledHits = body;
@@ -56,20 +45,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
                     Game.setCalls();
                     break;
                 case "selectCard":
-                    if(Game.selectCard(player, body)){
-
-                        Game.updateSelectedCards();
-
-                        console.log(`[Client ${player.name}] selected ${JSON.stringify(player.selectedCard)}`);
-
-                        if(Game.haveSelected){
-                            
-                            Game.endTrick();
-                            if(Game.isRoundOver){
-                                Game.endRound();
-                            }
-                        }
-                    }
+                    Game.selectCard(player, body)
                     break;
             }
         });

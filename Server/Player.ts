@@ -72,7 +72,7 @@ export default class Player{
         this.actualHits = 0;
     }
 
-    public startup(id : number, playercount : number, players : Player[]){
+    public start(id : number, playercount : number, players : Player[]){
         let names : string[] = [];
         players.forEach(player => {
             names.push(player.name);

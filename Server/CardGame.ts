@@ -70,6 +70,7 @@ export default class CardGame {
 
     public add(player : Player){
         this._players.add(player);
+        this.updateReady();
     }
  
     public remove(player : Player){
@@ -109,8 +110,8 @@ export default class CardGame {
     }
 
     public selectCard(player : Player, selected : number){
-        if(player.hasSelected) return false;
-        if(player != this._players.getAt(this._currentPlayer)) return false;
+        if(player.hasSelected) return;
+        if(player != this._players.getAt(this._currentPlayer)) return;
 
         player.selectedCardIndex = selected;
         this._selectedCards.add(player.selectedCard);
@@ -120,31 +121,28 @@ export default class CardGame {
         }
 
         this.updateCurrentPlayer();
+        this.updateSelectedCards();
 
-        return true;
+        console.log(`[Client ${player.name}] selected ${JSON.stringify(player.selectedCard)}`);
+
+        if(this.haveSelected){
+            this.endTrick();
+            if(this.isRoundOver){
+                this.endRound();
+            }
+        }
     }
 
     public updateSelectedCards(){
         this._players.emit(new Message("selectedCards", this._selectedCards));
     }
 
-    public updateReady(){
+    private updateReady(){
         this._players.emit(new Message("updateReady", `${this.readyCount} / ${this.count}`));
     }
 
     public updateCards(){
         this._players.updateCards();
-    }
-
-    public start(){
-        this._startingPlayer = 0;
-        this._currentPlayer = 0;
-        this._cardsPerRound = 1;
-
-        this.started = true;
-        this.getNewHands(this._cardsPerRound);
-        this._players.startup();
-        this._players.emit(new Message("updateCurrentPlayer", this._currentPlayer));
     }
 
     private updateCurrentPlayer(){
@@ -203,5 +201,22 @@ export default class CardGame {
         if(this._cardsPerRound == 10) this._reverse = true;
         if(this._reverse) this._cardsPerRound--;
         else this._cardsPerRound++;
+    }
+
+    public setReady(player : Player){
+        if(this.started) return;
+        player.readyState = true;
+        this.updateReady();
+    
+        // Start the Game 
+        if(this.areReady && this.readyCount >= 2){
+            console.log(`Game started with ${this._players.count} players`)
+            this.started = true;
+            this.getNewHands(this._cardsPerRound);
+            this._players.start();
+            this._players.emit(new Message("updateCurrentPlayer", this._currentPlayer));
+            this.updateCards();
+            this.setCalls();
+        }
     }
 }

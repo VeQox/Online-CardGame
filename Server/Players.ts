@@ -101,10 +101,10 @@ export default class Players{
         });
     }
 
-    public startup(){
+    public start(){
         let id = 0;
         this._players.forEach(player => {
-            player.startup(id, this.count, this._players);
+            player.start(id, this.count, this._players);
             id++;
         }); 
     }
