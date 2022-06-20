@@ -1,28 +1,20 @@
 export default class Card{
-    private _type : number;
-    private _value : number;
+    public type : string;
+    public value : string;
 
     static types : string[] = ["♣","♠","♦","♥"];
-    static values : string[] = ["","3","4","5","6","7","8","9","10","B","Q","K","A"];
+    static values : string[] = ["2","3","4","5","6","7","8","9","10","B","Q","K","A"];
 
-    public constructor(type : number, value : number){
-        this._type = type;
-        this._value = value;
-    }
-
-    public get type(){
-        return Card.types[this._type];
-    }
-
-    public get value(){
-        return Card.values[this._value];
+    public constructor(type : string, value : string){
+        this.type = type;
+        this.value = value;
     }
 
     public toString(){
         return `{"type": "${this.type}", "value": "${this.value}"}`;
     }
 
-    public compareTo(other : Card){
+    public compareTo(other : Card){  
         if(this._type == other._type)
             return this._value > other._value ? 1 : -1;
 
@@ -33,5 +25,14 @@ export default class Card{
             return -1;
 
         return 0;
+    }
+
+    // Not great
+    protected get _type(){
+        return Card.types.indexOf(this.type);
+    }
+
+    protected get _value(){
+        return Card.values.indexOf(this.value);
     }
 }
