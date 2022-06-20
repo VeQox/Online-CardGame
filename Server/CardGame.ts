@@ -36,7 +36,7 @@ export default class CardGame {
         let tmp : Cards = new Cards();
         Card.types.forEach(type => {
             Card.values.forEach(value => {
-                let card: Card = new Card(Card.types.indexOf(type), Card.values.indexOf(value));
+                let card: Card = new Card(type, value);
                 tmp.add(card);
             });
         });

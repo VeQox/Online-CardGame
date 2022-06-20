@@ -3,6 +3,21 @@ import { IncomingMessage } from "http";
 import { WebSocket, RawData, WebSocketServer } from "ws";
 import Player from "./Player";
 import Message from "./Message";
+import Cards from "./Cards";
+import Card from "./Card";
+
+// Cards Tests
+let tCards = new Cards();
+tCards.add(new Card("♥", "B"));
+tCards.add(new Card("♣", "2"))
+tCards.add(new Card("♥", "A"));
+console.log("Raw");
+console.log(tCards.cards);
+tCards.sort();
+console.log("Sorted");
+console.log(tCards.cards);
+
+/*
 
 const port = 8000;
 
@@ -44,7 +59,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
                     }
                     Game.setCalls();
                     break;
-                case "selectCard":
+                case "setSelectedCard":
                     Game.selectCard(player, body)
                     break;
             }
@@ -57,3 +72,4 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
         });
     }
 });
+*/

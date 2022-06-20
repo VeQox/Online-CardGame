@@ -51,7 +51,7 @@ export default class Cards{
 
     public sort(){
         this._cards.sort((a : Card, b : Card) => {
-            return a.compareTo(b);
+            return b.compareTo(a);
         });
     }
 }
