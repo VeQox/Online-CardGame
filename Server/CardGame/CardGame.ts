@@ -78,6 +78,11 @@ export default class CardGame {
         return this._players.getAt(index);
     }
 
+    public print(){
+        console.table(this);
+        this._players.print();
+    }
+
     public getNewHands(amount : number){
         this._usedCards = new Cards();
         this._players.cards = this.withdrawCards(amount);

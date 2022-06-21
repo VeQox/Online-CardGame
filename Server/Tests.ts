@@ -3,31 +3,41 @@ import Player from "./CardGame/Players/Player";
 import Cards from "./CardGame/Players/Cards/Cards";
 import Card from "./CardGame/Players/Cards/Card";
 import Players from "./CardGame/Players/Players";
-
+import CardGame from "./CardGame/CardGame";
 
 console.log("Card Tests");
 console.log("=======================");
-let tCards = new Cards();
-tCards.add(new Card("♣", "2"))
-tCards.add(new Card("♥", "A"));
+let cards = new Cards();
+cards.add(new Card("♣", "2"))
+cards.add(new Card("♥", "A"));
 console.log("Raw");
-console.log((tCards.toString()));
+console.log((cards.toString()));
 // Checks if the JSON format is correct
-let parsedCards = JSON.parse(tCards.toString());
-tCards.sort();
+let parsedCards = JSON.parse(cards.toString());
+cards.sort();
 console.log("Sorted");
-tCards.print();
+cards.print();
 console.log("At Index 0");
-console.log(tCards.getAt(0).toString());
-tCards.getAt(0).print();
+console.log(cards.getAt(0).toString());
+cards.getAt(0).print();
 
 
 console.log("Player Tests");
 console.log("=======================");
-let tPlayers = new Players();
-tPlayers.add(new Player("helloo", {} as WebSocket));
-tPlayers.add(new Player("hi", {} as WebSocket));
-tPlayers.add(new Player("goodbye", {} as WebSocket));
-tPlayers.print();
+let players = new Players();
+players.add(new Player("helloo", {} as WebSocket));
+players.add(new Player("hi", {} as WebSocket));
+players.add(new Player("goodbye", {} as WebSocket));
+players.print();
 console.log("At Index 0");
-tPlayers.getAt(0).print();
+players.getAt(0).print();
+
+
+console.log("CardGame Tests");
+console.log("=======================");
+let game = new CardGame();
+game.add(new Player("yea", {} as WebSocket));
+game.add(new Player("???", {} as WebSocket));
+game.add(new Player("nope", {} as WebSocket));
+game.getNewHands(5);
+game.print();
