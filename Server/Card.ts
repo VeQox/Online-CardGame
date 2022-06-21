@@ -1,5 +1,12 @@
 export default class Card{
+    /**
+     * ♣ ♠ ♦ ♥
+     */
     public type : string;
+
+    /**
+     * 2 3 4 5 6 7 8 9 10 B Q K A
+     */
     public value : string;
 
     static types : string[] = ["♣","♠","♦","♥"];
@@ -10,10 +17,19 @@ export default class Card{
         this.value = value;
     }
 
+    /**
+     * stringifies the card object
+     * @returns \{"type": "♥", "value" : "A"}
+     */
     public toString(){
         return `{"type": "${this.type}", "value": "${this.value}"}`;
     }
 
+    /**
+     * compares two card objects
+     * @param other 
+     * @returns 1 / -1 / 0
+     */
     public compareTo(other : Card){  
         if(this._type == other._type)
             return this._value > other._value ? 1 : -1;
@@ -27,7 +43,6 @@ export default class Card{
         return 0;
     }
 
-    // Not great
     protected get _type(){
         return Card.types.indexOf(this.type);
     }
