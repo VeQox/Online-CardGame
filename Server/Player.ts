@@ -72,6 +72,10 @@ export default class Player{
         this.actualHits = 0;
     }
 
+    public send(message : Message){
+        this._connection.send(message.toString())
+    }
+
     public start(id : number, playercount : number, players : Player[]){
         let names : string[] = [];
         players.forEach(player => {
@@ -87,9 +91,5 @@ export default class Player{
 
     public updatePoints(){
         this.send(new Message("updatePoints", this._points));
-    }
-
-    public send(message : Message){
-        this._connection.send(message.toString())
     }
 }
