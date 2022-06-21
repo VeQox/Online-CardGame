@@ -6,10 +6,6 @@ export default class Cards{
     public get count(){
         return this._cards.length;
     }
-    
-    public get cards(){
-        return this._cards;
-    }
 
     public add(card : Card){
         this._cards.push(card);
@@ -51,7 +47,10 @@ export default class Cards{
 
     public sort(){
         this._cards.sort((a : Card, b : Card) => {
-            return b.compareTo(a);
+            return a.compareTo(b);
         });
+    }
+    public toString(){
+        return this._cards;
     }
 }

@@ -30,24 +30,15 @@ export default class Card{
      * @param other 
      * @returns 1 / -1 / 0
      */
-    public compareTo(other : Card){  
-        if(this._type == other._type)
-            return this._value > other._value ? 1 : -1;
-
-        if(this._type > other._type)
-            return 1;
-
-        if(this._type < other._type)
+    public compareTo(other : Card){
+        if(this.computedValue > other.computedValue)
             return -1;
-
+        if(this.computedValue < other.computedValue)
+            return 1;
         return 0;
     }
 
-    protected get _type(){
-        return Card.types.indexOf(this.type);
-    }
-
-    protected get _value(){
-        return Card.values.indexOf(this.value);
+    protected get computedValue(){
+        return 100*Card.types.indexOf(this.type)+Card.values.indexOf(this.value);
     }
 }

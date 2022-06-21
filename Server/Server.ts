@@ -12,10 +12,11 @@ tCards.add(new Card("♥", "B"));
 tCards.add(new Card("♣", "2"))
 tCards.add(new Card("♥", "A"));
 console.log("Raw");
-console.log(tCards.cards);
+console.log(tCards.toString());
 tCards.sort();
 console.log("Sorted");
-console.log(tCards.cards);
+console.table(tCards.toString());
+console.log(tCards.getAt(0).toString());
 
 /*
 
