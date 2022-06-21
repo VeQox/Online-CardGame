@@ -49,7 +49,13 @@ export default class Cards{
     public toString(){
         let cards = "[\n";
         this._cards.forEach(card => {
-            cards += `  ${card.toString()}\n`;
+            if(card == this.getAt(this.count-1)){
+                cards += `  ${card.toString()}\n`;
+            }
+            else{
+                cards += `  ${card.toString()},\n`;
+            }
+            
         });
         cards += "]";  
         return cards;
