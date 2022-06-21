@@ -76,6 +76,21 @@ export default class Players{
         return this._players.indexOf(player);
     }
 
+    public contains(player : Player){
+        for(let _player of this._players){
+            if(_player == player) return true;
+        }
+        return false;
+    }
+
+    public removeCards(cards : Cards){
+        this._players.forEach(player => {
+            cards.cards.forEach(card => {
+                player.cards.remove(card);
+            });
+        });
+    }
+  
     public calcPoints(){
         this._players.forEach(player => {
             player.calcPoints();
@@ -118,22 +133,7 @@ export default class Players{
         this._players.sort((a : Player, b : Player) => {
            return a.compareTo(b);
         });
-    }
-
-    public contains(player : Player){
-        for(let _player of this._players){
-            if(_player == player) return true;
-        }
-        return false;
-    }
-
-    public removeCards(cards : Cards){
-        this._players.forEach(player => {
-            cards.cards.forEach(card => {
-                player.cards.remove(card);
-            });
-        });
-    }
+    }   
 
     public resetCalls(){
         this._players.forEach(player => {

@@ -10,7 +10,7 @@ export default class CardGame {
     private _selectedCards : Cards;
 
     public started : boolean;
-    private _reverse :boolean;
+    private _reverse : boolean;
 
     private _startingPlayer : number;
     private _currentPlayer : number;
