@@ -1,5 +1,3 @@
-import Card from "./Card";
-
 export default class Message{ 
     
     public readonly head : Head;

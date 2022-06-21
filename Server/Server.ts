@@ -3,8 +3,8 @@ import { IncomingMessage } from "http";
 import { WebSocket, RawData, WebSocketServer } from "ws";
 import Player from "./Player";
 import Message from "./Message";
-import Cards from "./Cards";
-import Card from "./Card";
+import Cards from "./Cards/Cards";
+import Card from "./Cards/Card";
 
 // Cards Tests
 let tCards = new Cards();

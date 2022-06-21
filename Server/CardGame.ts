@@ -1,7 +1,7 @@
-import Cards from "./Cards";
+import Cards from "./Cards/Cards";
 import Players from "./Players";
 import Player from "./Player";
-import Card from "./Card";
+import Card from "./Cards/Card";
 import Message from "./Message";
 
 export default class CardGame {

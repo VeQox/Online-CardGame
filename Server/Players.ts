@@ -1,5 +1,4 @@
-import Card from "./Card";
-import Cards from "./Cards";
+import Cards from "./Cards/Cards";
 import Message from "./Message";
 import Player from "./Player";
 
