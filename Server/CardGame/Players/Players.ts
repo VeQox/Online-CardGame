@@ -1,5 +1,5 @@
 import Cards from "./Cards/Cards";
-import Message from "./Message";
+import Message from "./Message/Message";
 import Player from "./Player";
 
 export default class Players{

@@ -1,8 +1,8 @@
-import Cards from "./Cards/Cards";
-import Players from "./Players";
-import Player from "./Player";
-import Card from "./Cards/Card";
-import Message from "./Message";
+import Cards from "./Players/Cards/Cards";
+import Players from "./Players/Players";
+import Player from "./Players/Player";
+import Card from "./Players/Cards/Card";
+import Message from "./Players/Message/Message";
 
 export default class CardGame {
     private _players : Players;

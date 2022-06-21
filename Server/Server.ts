@@ -1,10 +1,10 @@
-import CardGame from "./CardGame";
+import CardGame from "./CardGame/CardGame";
 import { IncomingMessage } from "http";
 import { WebSocket, RawData, WebSocketServer } from "ws";
-import Player from "./Player";
-import Message from "./Message";
-import Cards from "./Cards/Cards";
-import Card from "./Cards/Card";
+import Player from "./CardGame/Players/Player";
+import Message from "./CardGame/Players/Message/Message";
+import Cards from "./CardGame/Players/Cards/Cards";
+import Card from "./CardGame/Players/Cards/Card";
 
 // Cards Tests
 let tCards = new Cards();

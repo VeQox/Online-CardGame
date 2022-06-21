@@ -1,6 +1,6 @@
 import Cards from "./Cards/Cards";
 import WebSocket from "ws";
-import Message from "./Message";
+import Message from "./Message/Message";
 
 export default class Player{
     public name : string;
