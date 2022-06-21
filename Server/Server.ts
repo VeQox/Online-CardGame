@@ -8,7 +8,6 @@ import Card from "./CardGame/Players/Cards/Card";
 import Players from "./CardGame/Players/Players";
 
 
-/*
 const port = 8000;
 
 let Game : CardGame = new CardGame();
@@ -36,23 +35,6 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
             const head = message.head;
 
             console.log(`[Client ${player.name}] sent ${msg.toString()}`);
-
-            switch(head){
-                case "setReady":
-                    Game.setReady(player);
-                    break;
-                case "setCalls":
-                    player.calledHits = body;
-                    if(Game.haveSetCalls){
-                        Game.startRound();
-                        return; 
-                    }
-                    Game.setCalls();
-                    break;
-                case "setSelectedCard":
-                    Game.selectCard(player, body)
-                    break;
-            }
         });
 
         ws.on("close", (code : number) => {
