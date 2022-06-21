@@ -25,6 +25,10 @@ export default class Card{
         return `{"type": "${this.type}", "value": "${this.value}"}`;
     }
 
+    public print(){
+        console.table(this);
+    }
+
     /**
      * compares two card objects
      * @param other 

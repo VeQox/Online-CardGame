@@ -85,71 +85,36 @@ export default class Players{
 
     public removeCards(cards : Cards){
         this._players.forEach(player => {
-            cards.cards.forEach(card => {
-                player.cards.remove(card);
-            });
+            cards.remove(cards);
         });
-    }
-  
-    public calcPoints(){
-        this._players.forEach(player => {
-            player.calcPoints();
-            player.updatePoints();
-        });
-    }
-
-    public getWinnerOfTrick(){
-        let winner : Player = this._players[0];
-
-        this._players.forEach(player => {
-            const compareValue = player.selectedCard.compareTo(winner.selectedCard)
-            if(compareValue == 1) winner = player;
-        });
-
-        return winner;
-    }
-
-    public updateCards(){
-        this._players.forEach(player => {
-            player.updateCards();
-        });
-    }
-
-    public start(){
-        let id = 0;
-        this._players.forEach(player => {
-            player.start(id, this.count, this._players);
-            id++;
-        }); 
-    }
-
-    public emit(message : Message){
-        this._players.forEach(player => {
-            player.send(message);
-        })
     }
 
     public sort(){
         this._players.sort((a : Player, b : Player) => {
            return a.compareTo(b);
         });
-    }   
-
-    public resetCalls(){
-        this._players.forEach(player => {
-            player.calledHits = 0;
-        });
     }
 
-    public resetSelectedCard(){
+    /*
+    public toString(){
+        return this._players;
+        let players = "[\n";
         this._players.forEach(player => {
-            player.selectedCardIndex = -1;
+            players += `  ${player.toString()}\n`;
         });
+        players += "]\n";  
+        return players;
+        
+    }
+    */
+    
+    public print(){
+        console.table(this._players);
     }
 
-    public resetHits(){
+    public emit(message : Message){
         this._players.forEach(player => {
-            player.actualHits = 0;
-        });
+            player.send(message);
+        })
     }
 }

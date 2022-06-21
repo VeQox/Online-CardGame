@@ -11,8 +11,18 @@ export default class Cards{
         this._cards.push(card);
     }
 
-    public remove(card : Card){
-        this._cards.splice(this._cards.indexOf(card), 1);
+    public remove(cards : Cards) : void
+    public remove(card : Card) : void
+    public remove(parameter : Cards | Card){
+        if(parameter instanceof Cards){
+            parameter._cards.forEach(card => {
+                this.remove(card);
+            });
+        }
+        else{
+            this._cards.splice(this._cards.indexOf(parameter), 1);
+        }
+       
     }
 
     public removeAt(index : number){
@@ -21,6 +31,32 @@ export default class Cards{
 
     public getAt(index : number){
         return this._cards[index];
+    }
+
+    public contains(card : Card){
+        for(let _card of this._cards){
+            if(_card == card) return true;
+        }
+        return false;
+    }
+
+    public sort(){
+        this._cards.sort((a : Card, b : Card) => {
+            return a.compareTo(b);
+        });
+    }
+
+    public toString(){
+        let cards = "[\n";
+        this._cards.forEach(card => {
+            cards += `  ${card.toString()}\n`;
+        });
+        cards += "]";  
+        return cards;
+    }
+
+    public print(){
+        console.table(this._cards);
     }
 
     private getPerType(type : string){
@@ -36,21 +72,5 @@ export default class Cards{
     public getUsableCards(card : Card){
         let usableCards = this.getPerType(card.type);
         return usableCards.length == 0 ? this._cards : usableCards;
-    }
-
-    public contains(card : Card){
-        for(let _card of this._cards){
-            if(_card == card) return true;
-        }
-        return false;
-    }
-
-    public sort(){
-        this._cards.sort((a : Card, b : Card) => {
-            return a.compareTo(b);
-        });
-    }
-    public toString(){
-        return this._cards;
     }
 }
