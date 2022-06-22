@@ -8,9 +8,11 @@ import CardGame from "./CardGame/CardGame";
 console.log("Card Tests");
 console.log("=======================");
 let cards = new Cards();
-cards.add(new Card("♣", "2"))
+cards.add(new Card("♣", "2"));
 cards.add(new Card("♥", "A"));
 console.log("Raw");
+// checks if the card JSON format is correct
+let parsedCard = JSON.parse(cards.getAt(0).toString());
 console.log((cards.toString()));
 // Checks if the JSON format is correct
 let parsedCards = JSON.parse(cards.toString());
