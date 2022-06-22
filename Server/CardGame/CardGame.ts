@@ -40,7 +40,6 @@ export default class CardGame {
         });
         return tmp;
     }
-
     public get count(){
         return this._players.count;
     }
@@ -80,10 +79,6 @@ export default class CardGame {
 
     public print(){
         console.table(this);
-    }
-
-    public printPlayers(){
-        this._players.print();
     }
 
     public getNewHands(amount : number){

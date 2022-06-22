@@ -1,6 +1,7 @@
 import Cards from "./Cards/Cards";
 import WebSocket from "ws";
 import Message from "./Message/Message";
+import Card from "./Cards/Card";
 
 export default class Player{
     public name : string;
@@ -30,7 +31,7 @@ export default class Player{
     }
 
     public get selectedCard(){
-        return this.cards.getAt(this.selectedCardIndex);
+        return this.selectedCardIndex == -1 ? {} as Card : this.cards.getAt(this.selectedCardIndex);
     }
 
     public get hasSelected(){
@@ -43,13 +44,10 @@ export default class Player{
         return 0;
     }
 
-
-    /*
     public toString(){
-        return this;
-        //return `{"name": "${this.name}", "cards": "${1}", "points": "${this.points}", "readystate": "${this.readyState}", "selectedCard": "${this.selectedCard.toString()}", "hits": "${this.actualHits}", "calls": "${this.calledHits}", "hasSetCall": "${this.hasSetCall}"}`
+        //return this;
+        return `{"name": "${this.name}", "cards": "${1}", "points": "${this.points}", "readystate": "${this.readyState}", "selectedCard": "${this.selectedCard.toString()}", "hits": "${this.actualHits}", "calls": "${this.calledHits}", "hasSetCall": "${this.hasSetCall}"}`
     }
-    */
 
     public print(){
         console.table(this);

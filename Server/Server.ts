@@ -24,8 +24,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
     }
     else{
         let player : Player = new Player((request.url as string).substring(1), ws);
-        Game.add(player);   
-        Game.printPlayers();   
+        Game.add(player);  
 
         console.log(`[Client ${player.name}] connected`);
 
