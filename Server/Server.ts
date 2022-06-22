@@ -7,7 +7,6 @@ import Cards from "./CardGame/Players/Cards/Cards";
 import Card from "./CardGame/Players/Cards/Card";
 import Players from "./CardGame/Players/Players";
 
-
 const port = 8000;
 
 let Game : CardGame = new CardGame();
@@ -25,16 +24,18 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
     }
     else{
         let player : Player = new Player((request.url as string).substring(1), ws);
-        Game.add(player);      
+        Game.add(player);   
+        Game.printPlayers();   
 
         console.log(`[Client ${player.name}] connected`);
+
 
         ws.on("message", (msg : RawData) => {
             const message : Message = JSON.parse(msg.toString());
             const body = message.body;
             const head = message.head;
 
-            console.log(`[Client ${player.name}] sent ${msg.toString()}`);
+            console.log(`[Client ${player.name}] sent ${msg}`);
         });
 
         ws.on("close", (code : number) => {

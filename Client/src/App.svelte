@@ -32,6 +32,7 @@
 		ws.onopen = () => {
 			readyState = 1;
 			showReady = true;
+			ws.send(new Message("hello", "test"));
 		}
 		ws.onerror = () => {
 			readyState = -1;

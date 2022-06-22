@@ -80,6 +80,9 @@ export default class CardGame {
 
     public print(){
         console.table(this);
+    }
+
+    public printPlayers(){
         this._players.print();
     }
 
