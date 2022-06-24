@@ -5,10 +5,10 @@
         </a>
     </div>
     <div class="col flex items-center px-1">
-        <input bind:value={player.name} type="text" placeholder="Name" disabled={player.status != 0 ? true : undefined} class="h-8 rounded-md text-center w-full focus:outline-none disabled:bg-gray-200">
+        <input bind:value={player.name} type="text" placeholder="Name" disabled={player.status != 0 ? true : undefined} class="h-8 rounded-md text-center w-full focus:outline-none disabled:bg-gray-300">
     </div>
     <div class="col flex items-center px-1">
-        <button disabled={player.status != 0 ? true : undefined} type="button" class="w-full h-8 rounded-md bg-white hover:cursor-pointer disabled:bg-gray-200 disabled:cursor-auto" on:click={connect}>
+        <button disabled={player.status != 0 ? true : undefined} type="button" class="w-full h-8 rounded-md bg-white hover:cursor-pointer disabled:bg-gray-300 disabled:cursor-auto" on:click={connect}>
             {#if player.status == 0}
                 Connect
             {:else if player.status == 1}
@@ -19,8 +19,8 @@
         </button>
     </div>
 </Navbar>
+<Modal title="Waiting for Players" hidden={started} />
 
-<Modal/>
 
 <script lang="ts">
     import "../app.css"
@@ -28,6 +28,8 @@
     import Modal from "../components/modal.svelte"
     import Player, { ConnectionStatus } from "../Player"
 
+    let readyCount = "0 / 0";
+    let started : boolean = false;
     let player : Player = new Player();
     let ws : WebSocket = {} as WebSocket;
 
@@ -37,11 +39,17 @@
         update();
         ws.onopen = () => {
             player.status = ConnectionStatus.Connected;
+            readyCount = "0 / 1";
             update();
         }
         ws.onerror = () => {
             player.status = ConnectionStatus.Idle;
             update();
+        }
+        ws.onmessage = () => {
+
+            // started ...
+            started = true;
         }
     };
     const update = () => {
