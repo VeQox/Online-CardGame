@@ -67,6 +67,7 @@ export default class CardGame {
 
     public add(player : Player){
         this._players.add(player);
+        this.updateReady();
     }
  
     public remove(player : Player){
@@ -107,5 +108,9 @@ export default class CardGame {
             card = CardGame.stack.getAt(Math.floor(Math.random()*CardGame.stack.count));
         } while (this._usedCards.contains(card) === true);
         return card;
+    }
+
+    public updateReady(){
+        this._players.emit(new Message("updateReady", `${this.readyCount} / ${this.count}`));
     }
 }

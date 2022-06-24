@@ -5,13 +5,13 @@
         </a>
     </div>
     <div class="col flex items-center px-1">
-        <input bind:value={player.name} type="text" placeholder="Name" disabled={player.status != 0 ? true : undefined} class="h-8 rounded-md text-center w-full focus:outline-none disabled:bg-gray-300">
+        <input bind:value={player.name} type="text" placeholder="Name" disabled={status != 0 ? true : undefined} class="h-8 rounded-md text-center w-full focus:outline-none disabled:bg-gray-300">
     </div>
     <div class="col flex items-center px-1">
-        <button disabled={player.status != 0 ? true : undefined} type="button" class="w-full h-8 rounded-md bg-white hover:cursor-pointer disabled:bg-gray-300 disabled:cursor-auto" on:click={connect}>
-            {#if player.status == 0}
+        <button disabled={status != 0 ? true : undefined} type="button" class="w-full h-8 rounded-md bg-white hover:cursor-pointer disabled:bg-gray-300 disabled:cursor-auto" on:click={connect}>
+            {#if status == 0}
                 Connect
-            {:else if player.status == 1}
+            {:else if status == 1}
                 Connecting
             {:else}
                 Connected
@@ -19,40 +19,56 @@
         </button>
     </div>
 </Navbar>
-<Modal title="Waiting for Players" hidden={started} />
+<Modal title="Waiting for Players" hidden={started || status != ConnectionStatus.Connected} loading={true}>
+    <span slot="body">
+        <p class="py-4">
+           {readyCount}
+        </p>
+    </span>
+    <span slot="footer">
+        <button disabled={ready ? true : undefined}  type="button" class="my-1 px-2 py-1 mt-1 rounded-md disabled:bg-emerald-400 bg-red-400 border-2 border-gray-700 hover:cursor-pointer" on:click={setReady}>Ready</button>
+    </span>
+</Modal>
 
 
 <script lang="ts">
     import "../app.css"
     import Navbar from "../components/navbar.svelte"
     import Modal from "../components/modal.svelte"
-    import Player, { ConnectionStatus } from "../Player"
+    import Player from "../Player"
+    import Message from "../Message";
+    import { ConnectionStatus } from "../ConnectionStatus"
 
+    let status : ConnectionStatus = ConnectionStatus.Idle;
     let readyCount = "0 / 0";
-    let started : boolean = false;
+    let started = false;
+    let ready = false;
     let player : Player = new Player();
     let ws : WebSocket = {} as WebSocket;
 
     const connect = () => {
         ws = new WebSocket(`ws://localhost:8000/${player.name}`);
-        player.status = ConnectionStatus.Connecting;
-        update();
+        status = ConnectionStatus.Connecting;
         ws.onopen = () => {
-            player.status = ConnectionStatus.Connected;
-            readyCount = "0 / 1";
-            update();
+            status = ConnectionStatus.Connected;
         }
         ws.onerror = () => {
-            player.status = ConnectionStatus.Idle;
-            update();
+            status = ConnectionStatus.Idle;
         }
-        ws.onmessage = () => {
+        ws.onmessage = (ev : MessageEvent) => {
+            let message : Message = JSON.parse(ev.data);
+            let head = message.head;
+            let body = message.body;
 
-            // started ...
-            started = true;
+            switch(head){
+                case "updateReady":
+                    readyCount = body
+                    break;
+            }
         }
     };
-    const update = () => {
-        player = player;
+    const setReady = () => {
+        ready = true;
+        ws.send(new Message("setReady", "").toString());
     }
 </script>

@@ -10,27 +10,21 @@
                 </BarLoader>
             </p>
             {/if}
-            <p class="py-4">
-                {body}
-            </p>
+            <slot name="body">
+
+            </slot>
         </div>
         <div class="flex justify-center center-items py-1">
-            <button disabled={ready ? true : undefined}  type="button" class="my-1 px-2 py-1 mt-1 rounded-md disabled:bg-emerald-400 bg-red-400 border-2 border-gray-700 hover:cursor-pointer" on:click={() => ready = true}>Ready</button>
+            <slot name="footer">
+
+            </slot>            
         </div>
     </div>
 </div>
 
 <script lang="ts">
     import {BarLoader} from "svelte-loading-spinners";
-    import Message from "../Message"
     export let hidden : boolean = false;
     export let title : string = "Modal Title";
-    export let body : string = "Modal Body";
     export let loading : boolean = false;
-    
-    function setReady(ws : WebSocket){
-        ws.send(new Message("setReady", "").toString());
-    }
-
-    let ready : boolean = false;
 </script>

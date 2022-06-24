@@ -35,6 +35,13 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
             const head = message.head;
 
             console.log(`[Client ${player.name}] sent ${msg}`);
+
+            switch(head){
+                case "setReady":
+                    player.readyState = true;
+                    Game.updateReady();
+                    break;
+            }
         });
 
         ws.on("close", (code : number) => {
