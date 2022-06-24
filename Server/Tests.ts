@@ -33,13 +33,3 @@ players.add(new Player("goodbye", {} as WebSocket));
 players.print();
 console.log("At Index 0");
 players.getAt(0).print();
-
-
-console.log("CardGame Tests");
-console.log("=======================");
-let game = new CardGame();
-game.add(new Player("yea", {} as WebSocket));
-game.add(new Player("???", {} as WebSocket));
-game.add(new Player("nope", {} as WebSocket));
-game.getNewHands(5);
-game.print();

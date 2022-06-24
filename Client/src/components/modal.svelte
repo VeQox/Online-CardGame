@@ -5,10 +5,12 @@
         </div>
         <div class="border-b-4 border-gray-600 text-center">
             {#if loading}
-            <p>
-                <BarLoader size="25" unit="vw" color="#4b5563" duration="5s">
-                </BarLoader>
-            </p>
+            <div class="h-1 overflow-clip">
+                <p>
+                    <BarLoader size="25" unit="vw" color="#4b5563" duration="5s">
+                    </BarLoader>
+                </p>
+            </div>
             {/if}
             <slot name="body">
 
