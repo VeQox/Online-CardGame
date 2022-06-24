@@ -31,6 +31,19 @@
     </span>
 </Modal>
 
+<Modal title="Set Call">
+    <span slot="body">
+        <Cards cards={[{"type": "A", "value": "B"},{"type": "A", "value": "B"}]}/>
+    </span>
+    <span slot="footer">
+        <div class="grid grid-cols-2 justify-center items-center mx-1">
+            <input class="h-8 rounded-md text-center w-full focus:outline-none disabled:bg-gray-300">
+            <button disabled={ready ? true : undefined} type="button" class="my-1 py-1 mt-1 rounded-md disabled:bg-emerald-400 bg-red-400 border-2 hover:cursor-pointer">Confirm</button>
+        </div>
+    </span>
+    
+</Modal>
+
 
 <script lang="ts">
     import "../app.css"
