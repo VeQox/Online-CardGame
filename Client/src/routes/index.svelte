@@ -22,20 +22,6 @@
 
 <Modal title="Waiting for Players" hidden={started || status != ConnectionStatus.Connected} loading={true}>
     <span slot="body">
-        <div class="grid grid-cols-{cards.length}">
-            {#each cards as card }
-            <div>
-                <p>
-                    {card.type} 
-                </p>
-                <p>
-                    {card.value}
-                </p>
-
-            </div>
-            {/each}
-        </div>
-
         <p class="py-4">
            {readyCount}
         </p>
@@ -47,25 +33,13 @@
 
 
 <script lang="ts">
-    type Card = {"type": string, "value": string}
-
-    let cards : Card[] = [{"type": "♥", "value": "A"}, 
-                          {"type": "♥", "value": "A"}, 
-                          {"type": "♥", "value": "A"},
-                          {"type": "♥", "value": "A"},
-                          {"type": "♥", "value": "A"},
-                          {"type": "♥", "value": "A"},
-                          {"type": "♥", "value": "A"},
-                          {"type": "♥", "value": "A"},
-                          {"type": "♥", "value": "A"},
-                          {"type": "♥", "value": "A"}]
-
     import "../app.css"
     import Navbar from "../components/navbar.svelte"
     import Modal from "../components/modal.svelte"
     import Player from "../Player"
     import Message from "../Message";
     import { ConnectionStatus } from "../Status"
+    import Cards from "../components/cards.svelte"
 
     let status : ConnectionStatus = ConnectionStatus.Idle;
     let readyCount = "0 / 0";
