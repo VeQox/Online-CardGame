@@ -1,13 +1,13 @@
 <Navbar>
-    <div class="col flex justify-start">
+    <span slot="img" class="w-full">
         <a href="https://github.com/VeQox/Online-CardGame">
             <img class="h-12" src="/github.png" alt="github logo">
         </a>
-    </div>
-    <div class="col flex items-center px-1">
+    </span>    
+    <span slot="col-2" class="w-full">
         <input bind:value={player.name} type="text" placeholder="Name" disabled={status != 0 ? true : undefined} class="h-8 rounded-md text-center w-full focus:outline-none disabled:bg-gray-300">
-    </div>
-    <div class="col flex items-center px-1">
+    </span>
+    <span slot="col-3" class="w-full"> 
         <button disabled={status != 0 ? true : undefined} type="button" class="w-full h-8 rounded-md bg-white hover:cursor-pointer disabled:bg-gray-300 disabled:cursor-auto" on:click={connect}>
             {#if status == 0}
                 Connect
@@ -17,7 +17,7 @@
                 Connected
             {/if}
         </button>
-    </div>
+    </span>
 </Navbar>
 <Modal title="Waiting for Players" hidden={started || status != ConnectionStatus.Connected} loading={true}>
     <span slot="body">
@@ -37,7 +37,7 @@
     import Modal from "../components/modal.svelte"
     import Player from "../Player"
     import Message from "../Message";
-    import { ConnectionStatus } from "../ConnectionStatus"
+    import { ConnectionStatus } from "../Status"
 
     let status : ConnectionStatus = ConnectionStatus.Idle;
     let readyCount = "0 / 0";
@@ -57,6 +57,7 @@
         }
         ws.onmessage = (ev : MessageEvent) => {
             let message : Message = JSON.parse(ev.data);
+            console.log(message);
             let head = message.head;
             let body = message.body;
 
