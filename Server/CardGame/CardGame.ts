@@ -72,6 +72,7 @@ export default class CardGame {
  
     public remove(player : Player){
         this._players.remove(player);
+        this.updateReady();
     }
 
     public getAt(index : number){
