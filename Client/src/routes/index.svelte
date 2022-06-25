@@ -31,9 +31,9 @@
     </span>
 </Modal>
 
-<Modal title="Set Call">
+<Modal title="Set Call" hidden>
     <span slot="body">
-        <Cards cards={[{"type": "A", "value": "B"},{"type": "A", "value": "B"}]}/>
+        <Cards cards={cards}/>
     </span>
     <span slot="footer">
         <div class="grid grid-cols-2 justify-center items-center mx-1">
@@ -45,6 +45,26 @@
 </Modal>
 
 
+<Modal title="Select Card">
+    <span slot="body">
+        <div class="grid grid-flow-col">
+            {#each validCards as card}
+            <div id={cards.indexOf(card).toString()} class="hover:bg-gray-300" on:click={() => {console.log(cards); console.log(validCards); console.log(card)}}>
+                <p>
+                    {card.type} 
+                </p>
+                <p>
+                    {card.value}
+                </p>
+            </div>
+            {/each}
+        </div>
+    </span>
+    <span slot="footer">
+        
+    </span>
+</Modal>
+
 <script lang="ts">
     import "../app.css"
     import Navbar from "../components/navbar.svelte"
@@ -54,6 +74,8 @@
     import { ConnectionStatus } from "../Status"
     import Cards from "../components/cards.svelte"
 
+    let cards =  [{"type": "♥", "value": "2"},{"type": "♥", "value": "10"},{"type": "♥", "value": "K"}]
+    let validCards = [{"type": "♥", "value": "2"},{"type": "♥", "value": "10"},{"type": "♥", "value": "K"}]
     let status : ConnectionStatus = ConnectionStatus.Idle;
     let readyCount = "0 / 0";
     let started = false;
