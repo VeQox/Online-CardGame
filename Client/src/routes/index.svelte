@@ -37,25 +37,20 @@
     </span>
     <span slot="footer">
         <div class="grid grid-cols-2 justify-center items-center mx-1">
-            <input class="h-8 rounded-md text-center w-full focus:outline-none disabled:bg-gray-300">
-            <button disabled={ready ? true : undefined} type="button" class="my-1 py-1 mt-1 rounded-md disabled:bg-emerald-400 bg-red-400 border-2 hover:cursor-pointer">Confirm</button>
+            <input bind:value={call} class="h-8 rounded-md text-center w-full focus:outline-none disabled:bg-gray-300">
+            <button disabled={ready ? true : undefined} on:click={setCall} type="button" class="my-1 py-1 mt-1 rounded-md disabled:bg-emerald-400 bg-red-400 border-2 hover:cursor-pointer">Confirm</button>
         </div>
     </span>
     
 </Modal>
 
-
-<Modal title="Select Card">
+<Modal title="Select Card" hidden>
     <span slot="body">
         <div class="grid grid-flow-col">
             {#each validCards as card}
-            <div id={cards.indexOf(card).toString()} class="hover:bg-gray-300" on:click={() => {console.log(cards); console.log(validCards); console.log(card)}}>
-                <p>
-                    {card.type} 
-                </p>
-                <p>
-                    {card.value}
-                </p>
+            <div id={getIndexOf(card).toString()} class="hover:bg-gray-300" on:click={() => select(getIndexOf(card))}>
+                <p>{card.type}</p>
+                <p>{card.value}</p>
             </div>
             {/each}
         </div>
@@ -75,7 +70,8 @@
     import Cards from "../components/cards.svelte"
 
     let cards =  [{"type": "♥", "value": "2"},{"type": "♥", "value": "10"},{"type": "♥", "value": "K"}]
-    let validCards = [{"type": "♥", "value": "2"},{"type": "♥", "value": "10"},{"type": "♥", "value": "K"}]
+    let validCards = [{"type": "♥", "value": "10"},{"type": "♥", "value": "K"},{"type": "♥", "value": "2"}]
+
     let status : ConnectionStatus = ConnectionStatus.Idle;
     let readyCount = "0 / 0";
     let started = false;
@@ -108,5 +104,17 @@
     const setReady = () => {
         ready = true;
         ws.send(new Message("setReady", "").toString());
-    }
+    };
+    const select = (index : number) => {
+        ws.send(new Message("selectCard", cards[index]).toString())
+    };
+
+    let call : number;
+    const setCall = () => {
+        ws.send(new Message("setCall", call).toString())
+    }  
+
+    const getIndexOf = (card : {"type" : string, "value" : string}) => {
+        return cards.findIndex(element => element.type == card.type && element.value == card.value);
+    };
 </script>
