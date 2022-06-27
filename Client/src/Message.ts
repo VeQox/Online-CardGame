@@ -15,3 +15,4 @@ export default class Message{
 
 type Head =  "setReady" 
             |"updateReady"
+            |"getCall"

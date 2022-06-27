@@ -117,4 +117,10 @@ export default class Players{
             player.send(message);
         })
     }
+
+    public setIDs(){
+        this._players.forEach(() => (player, i) => {
+            player.send(new Message("startGame", {"ID": i, "count": this.count}))
+        });
+    }
 }
