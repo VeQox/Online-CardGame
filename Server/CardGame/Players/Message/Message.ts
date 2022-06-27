@@ -13,17 +13,10 @@ export default class Message{
     }
 }
 
-type Head =   "startGame"
-            | "setReady" 
-            | "updateReady"
-            | "setSelectedCard"
-            | "setCalls"
-            | "updateCalls" 
-            | "setCards"
-            | "updateCards"
-            | "updateCurrentPlayer"
-            | "newTrick" 
-            | "newRound" 
-            | "updatePoints"
-            | "selectedCards" 
-            | "startRound";
+type Head = "setReady"
+           |"setCall"
+           |"updateReady"
+           |"startingPlayer"
+           |"updateCurrentPlayer"
+           |"getCall"
+           |"startGame"

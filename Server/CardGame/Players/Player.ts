@@ -8,7 +8,7 @@ export default class Player{
     public cards : Cards;
     private _points : number;
     public actualHits : number;
-    public calledHits : number;
+    public _calledHits : number;
     public selectedCardIndex : number;
     private _connection : WebSocket;
     public readyState : boolean;
@@ -26,6 +26,11 @@ export default class Player{
         this.hasSetCall = false;
     }
 
+    public set calledHits(amount : number){
+        this._calledHits = amount;
+        this.hasSetCall = true;
+    }
+    
     public get points(){
         return this._points;
     }
@@ -71,5 +76,9 @@ export default class Player{
 
     public send(message : Message){
         this._connection.send(message.toString())
+    }
+
+    public getCall(){
+        this.send(new Message("getCall", this.cards));
     }
 }

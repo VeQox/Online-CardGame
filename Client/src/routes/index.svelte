@@ -31,7 +31,7 @@
     </span>
 </Modal>
 
-<Modal title="Set Call" hidden>
+<Modal title="Set Call" hidden={!getCall}>
     <span slot="body">
         <Cards cards={cards}/>
     </span>
@@ -44,7 +44,8 @@
     
 </Modal>
 
-<Modal title="Select Card" hidden>
+
+<Modal title="Select Card" hidden={!selectCard}>
     <span slot="body">
         <div class="grid grid-flow-col">
             {#each validCards as card}
@@ -76,6 +77,8 @@
     let readyCount = "0 / 0";
     let started = false;
     let ready = false;
+    let getCall = false;
+    let selectCard = false;
     let player : Player = new Player();
     let ws : WebSocket = {} as WebSocket;
 
@@ -97,6 +100,9 @@
             switch(head){
                 case "updateReady":
                     readyCount = body
+                    break;
+                case "getCall":
+                    getCall = true;
                     break;
             }
         }

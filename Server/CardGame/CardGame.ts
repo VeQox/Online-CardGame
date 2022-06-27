@@ -83,9 +83,9 @@ export default class CardGame {
         console.table(this);
     }
 
-    public getNewHands(amount : number){
+    public getNewHands(){
         this._usedCards = new Cards();
-        this._players.cards = this.withdrawCards(amount);
+        this._players.cards = this.withdrawCards(this._cardsPerRound);
     }
 
     private withdrawCards(amount : number){
@@ -113,5 +113,31 @@ export default class CardGame {
 
     public updateReady(){
         this._players.emit(new Message("updateReady", `${this.readyCount} / ${this.count}`));
+    }
+
+    public startGame(){
+        this.started = true;
+        this._currentPlayer = 0;
+        this._startingPlayer = 0;
+
+        this._players.setIDs();
+        this.startRound();
+    }
+
+    public getCall(){
+        this._players.getAt(this._startingPlayer).getCall();
+        this.updateStartingPlayer();
+    }
+
+    private updateStartingPlayer(){
+        this._startingPlayer++;
+        if(this._startingPlayer == this.count){
+            this._startingPlayer == 0;
+        }
+    }
+
+    public startRound(){
+        this.getNewHands();
+        this.getCall();
     }
 }
