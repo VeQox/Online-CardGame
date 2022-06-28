@@ -119,7 +119,7 @@ export default class Players{
     }
 
     public setIDs(){
-        this._players.forEach(() => (player, i) => {
+        this._players.forEach((player, i) => {
             player.send(new Message("startGame", {"ID": i, "count": this.count}))
         });
     }

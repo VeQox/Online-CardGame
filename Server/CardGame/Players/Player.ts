@@ -20,7 +20,7 @@ export default class Player{
         this.cards = new Cards();
         this._points = 0;
         this.actualHits = 0;
-        this.calledHits = 0;
+        this._calledHits = 0;
         this.selectedCardIndex = -1;
         this.readyState = false;
         this.hasSetCall = false;

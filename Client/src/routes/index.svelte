@@ -44,12 +44,11 @@
     
 </Modal>
 
-
 <Modal title="Select Card" hidden={!selectCard}>
     <span slot="body">
         <div class="grid grid-flow-col">
             {#each validCards as card}
-            <div id={cards.indexOf(card).toString()} class="hover:bg-gray-300" on:click={() => {console.log(cards); console.log(validCards); console.log(card)}}>
+            <div id={getIndexOf(card).toString()} class="hover:bg-gray-300" on:click={() => select(card)}>
                 <p>
                     {card.type} 
                 </p>
@@ -73,23 +72,32 @@
     import Message from "../Message";
     import { ConnectionStatus } from "../Status"
     import Cards from "../components/cards.svelte"
+    import type Card from "../../../Server/CardGame/Players/Cards/Card"
 
-    let cards =  [{"type": "♥", "value": "2"},{"type": "♥", "value": "10"},{"type": "♥", "value": "K"}]
-    let validCards = [{"type": "♥", "value": "2"},{"type": "♥", "value": "10"},{"type": "♥", "value": "K"}]
-    let status : ConnectionStatus = ConnectionStatus.Idle;
-    let readyCount = "0 / 0";
     let started = false;
     let ready = false;
     let getCall = false;
     let selectCard = false;
+
+    let cards : Card[] = [];
+    let validCards : Card[] = [];
+
     let player : Player = new Player();
     let ws : WebSocket = {} as WebSocket;
+
+    let status : ConnectionStatus = ConnectionStatus.Idle;
+    
+    let readyCount = "0 / 0";
+    let playerCount;
 
     const connect = () => {
         ws = new WebSocket(`ws://localhost:8000/${player.name}`);
         status = ConnectionStatus.Connecting;
         ws.onopen = () => {
             status = ConnectionStatus.Connected;
+        }
+        ws.onclose = () => {
+            status = ConnectionStatus.Idle;
         }
         ws.onerror = () => {
             status = ConnectionStatus.Idle;
@@ -102,16 +110,28 @@
 
             switch(head){
                 case "updateReady":
-                    readyCount = body
+                    readyCount = body;
+                    break;
+                case "startGame":
+                    started = true;
+                    player.ID = body.ID;
+                    playerCount = body.count;
                     break;
                 case "getCall":
                     getCall = true;
                     break;
             }
         }
+
     };
     const setReady = () => {
         ready = true;
         ws.send(new Message("setReady", "").toString());
-    }
+    };
+    const getIndexOf = (card : Card) => {
+        return cards.findIndex(element => card == element);
+    };
+    const select = (card : Card) => {
+        ws.send(new Message("selectCard", getIndexOf(card)).toString())
+    };
 </script>

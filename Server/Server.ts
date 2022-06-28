@@ -44,6 +44,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
                         Game.startGame();
                     }
                     break;
+                    /*
                 case "setCall":
                     player.calledHits = body;
                     if(!Game.haveSetCalls){
@@ -53,6 +54,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
                         Game.startRound();
                     }
                     break;
+                    */
             }
         });
 

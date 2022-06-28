@@ -121,7 +121,9 @@ export default class CardGame {
         this._startingPlayer = 0;
 
         this._players.setIDs();
+        /*
         this.startRound();
+        */
     }
 
     public getCall(){
