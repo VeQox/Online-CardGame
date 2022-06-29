@@ -13,8 +13,9 @@ export default class Message{
     }
 }
 
-type Head =  "setReady" 
+type Head =  "setReady"
             |"updateReady"
-            |"getCall"
             |"selectCard"
+            |"setCall"
+            |"getCall"
             |"startGame"
