@@ -36,9 +36,9 @@ export default class Players{
     }
 
     public get areReady(){
-        this._players.forEach(player => {
+        for(let player of this._players){
             if(!player.readyState) return false;
-        });
+        }
         return true;
     }
 

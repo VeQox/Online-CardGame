@@ -117,16 +117,12 @@ export default class CardGame {
 
     public startGame(){
         this.started = true;
-        this._currentPlayer = 0;
-        this._startingPlayer = 0;
 
         this._players.setIDs();
-        /*
         this.startRound();
-        */
     }
 
-    public getCall(){
+    public async getCall(){
         this._players.getAt(this._startingPlayer).getCall();
         this.updateStartingPlayer();
     }

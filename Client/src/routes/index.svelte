@@ -113,9 +113,6 @@
                     player.ID = body.ID;
                     playerCount = body.count;
                     break;
-                case "getCall":
-                    getCall = true;
-                    break;
             }
         }
 
@@ -127,13 +124,11 @@
     const select = (index : number) => {
         ws.send(new Message("selectCard", cards[index]).toString())
     };
-
+    const getIndexOf = (card : {"type" : string, "value" : string}) => {
+        return cards.findIndex(element => element.type == card.type && element.value == card.value);
+    };
     let call : number;
     const setCall = () => {
         ws.send(new Message("setCall", call).toString())
     }  
-
-    const getIndexOf = (card : {"type" : string, "value" : string}) => {
-        return cards.findIndex(element => element.type == card.type && element.value == card.value);
-    };
 </script>

@@ -42,6 +42,7 @@ wss.on("connection", (ws : WebSocket, request : IncomingMessage) => {
                     Game.updateReady();
                     if(Game.areReady && Game.count >= 2){
                         Game.startGame();
+
                     }
                     break;
                     /*
